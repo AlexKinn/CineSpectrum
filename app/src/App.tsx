@@ -1,8 +1,9 @@
+import React from 'react';
 import './App.css';
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <header className="content">
@@ -13,4 +14,3 @@ function App() {
   );
 }
 
-export default App;
