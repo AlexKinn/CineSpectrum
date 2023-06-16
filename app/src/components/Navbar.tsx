@@ -41,16 +41,17 @@ export default function Navbar() {
         <Link to="/" className={classes.header__content__home}>
           LOGO
         </Link>
+        { size.width >= 1040 &&
+          <div className={classes.header__content__nav__search}>
+            <input type="search" placeholder="Search here" /> 
+            <button></button>
+          </div>
+        }
         <nav 
           className={`${classes.header__content__nav} ${
             menuOpen && size.width < 1040 ? classes.isMenu: ""
           }`}
         >
-          <div className={classes.header__content__nav__search}>
-            <input type="search" 
-              placeholder="Search here" />
-            <button></button>
-            </div>
           <ul>
             <li>
               <Link to="/">Movies</Link>
@@ -66,7 +67,7 @@ export default function Navbar() {
             </li>
           </ul>
         </nav>
-        <div>
+        <div className={classes.header__content__toggle}>
           {!menuOpen ? (
             <GiHamburgerMenu onClick={menuToggleHandler} />
           ) : (

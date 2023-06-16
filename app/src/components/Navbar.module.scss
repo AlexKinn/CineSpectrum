@@ -30,6 +30,21 @@
             padding-left: 2rem;
         }
 
+        &__toggle {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-size: 2rem;
+            transition: 0.3s ease all;
+            position: relative;
+            &:hover {
+                color: $primary-color;
+            }
+            @include breakpoint(md) {
+                display: none;
+            }
+        }
+
         &__nav {
             top: 0;
             right: 100%;
@@ -42,12 +57,15 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: rgba($dark-color, 0.8);
+            background: rgba($dark-color, 0.3);
             backdrop-filter: blur(2px);
             transform: translate(0);
             transition: 0.3s ease transform;
 
-            
+            &.isMenu {
+                transform: translate(100%);
+            }
+
             @include breakpoint(md) {
                 transform: none;
                 flex-direction: row;
