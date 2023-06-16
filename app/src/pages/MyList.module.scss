@@ -1,0 +1,56 @@
+
+.mylist {
+    height: 100vw;
+
+    &__top {
+        position: absolute;
+        width: 100%;
+        height: 10em;
+        background: rgb(5, 63, 151);
+        z-index: -100;
+    }
+    &__main {
+        width: 50%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 0 auto;
+        border: 1px solid rgb(5, 63, 151);
+    }
+    &__title {
+        margin: 20px;
+        color: white;
+    }
+    &__banner {
+        width: 100%;
+        height: 40vh;
+        background: rgb(5, 63, 151);
+        border: 15px solid white;
+    }
+    &__categories {
+        width: 100%;
+        border-bottom: 1px solid rgb(5, 63, 151);
+        text-align: center;
+    }
+    &__category {
+        list-style: none;
+    }
+    &__list-block {
+        width: 100%;
+        padding: 15px;
+    }
+    &__headers {
+        width: 100%;
+        border: 2px solid black;
+        background: cyan;
+    }
+    &__list {
+        width: 100%;
+        list-style: none;
+    }
+    &__item { //Not working???
+        width: 100%;
+        color: red;
+        list-style: none;
+    }
+}

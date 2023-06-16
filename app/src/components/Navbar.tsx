@@ -5,7 +5,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
 
 
-export default function Navbar() {
+const Navbar: React.FunctionComponent = () => {
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [size, setSize] = useState({
@@ -78,3 +78,5 @@ export default function Navbar() {
     </header> 
   )
 }
+
+export default Navbar;
