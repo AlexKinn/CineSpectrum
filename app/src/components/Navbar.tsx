@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import classes from "./Navbar.module.scss";
 import { Link } from "react-router-dom";
-import { GiHamburgerMenu } from "react-icons/gi"
-import { AiOutlineClose } from "react-icons/ai"
+import { GiHamburgerMenu } from "react-icons/gi";
+import { AiOutlineClose } from "react-icons/ai";
 
 
 export default function Navbar() {
@@ -26,7 +26,7 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (size.width > 768 && menuOpen) {
+    if (size.width > 1040 && menuOpen) {
       setMenuOpen(false);
     }
   }, [size.width, menuOpen]);
@@ -41,7 +41,11 @@ export default function Navbar() {
         <Link to="/" className={classes.header__content__home}>
           LOGO
         </Link>
-        <nav className={classes.header__content__nav}>
+        <nav 
+          className={`${classes.header__content__nav} ${
+            menuOpen && size.width < 1040 ? classes.isMenu: ""
+          }`}
+        >
           <div className={classes.header__content__nav__search}>
             <input type="search" 
               placeholder="Search here" />
@@ -61,14 +65,14 @@ export default function Navbar() {
               <Link to="/my-list">My List</Link>
             </li>
           </ul>
-          <div>
-            {!menuOpen ? (
-              <GiHamburgerMenu onClick={menuToggleHandler} />
-            ) : (
-              <AiOutlineClose onClick={menuToggleHandler} />
-            )}
-          </div>
         </nav>
+        <div>
+          {!menuOpen ? (
+            <GiHamburgerMenu onClick={menuToggleHandler} />
+          ) : (
+            <AiOutlineClose onClick={menuToggleHandler} />
+          )}
+          </div>
       </div>
     </header> 
   )
