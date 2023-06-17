@@ -1,0 +1,1 @@
+Autocomplete search as you type data calls to server should be throttled.

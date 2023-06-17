@@ -1,5 +1,6 @@
 @import "../styles/variables.scss";
 
+
 .header {
     background: $dark-color;
     width: 100%;
@@ -11,7 +12,7 @@
     transition: 0.3s ease all;
 
     &__content {
-        overflow: hidden;
+        // overflow: hidden;
         color: $light-color;
         margin: 0 auto;
         max-width: 1920px;
@@ -74,14 +75,10 @@
                 height: 100%;
                 position: static;
             }
-            &__search {
-                
-                input {
-                    width: 400px;
-                }
-                button {
-
-                }
+            &__searchbar {
+                border: 2px solid rgb(192, 203, 212);
+                width: 300px;
+                background-color: beige;
             }
             ul {
                 list-style: none;

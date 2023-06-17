@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import classes from "./Navbar.module.scss";
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
+import { Autocomplete, TextField } from "@mui/material";
 
 
 const Navbar: React.FunctionComponent = () => {
@@ -35,6 +36,15 @@ const Navbar: React.FunctionComponent = () => {
     setMenuOpen((p) => !p);
   }
 
+  const searchOptions = [
+    { label: 'option1', id: 1},
+    { label: 'option2', id: 2}
+  ];
+  const handleSearch = (event: SyntheticEvent<Element, Event>, value: { label: string; id: number; }) => {
+    return redirect("/");
+  }
+  // (event: SyntheticEvent<Element, Event>, value: { label: string; id: number; } 
+
   return ( 
     <header className={classes.header}>
       <div className={classes.header__content}>
@@ -42,10 +52,15 @@ const Navbar: React.FunctionComponent = () => {
           LOGO
         </Link>
         { size.width >= 1040 &&
-          <div className={classes.header__content__nav__search}>
-            <input type="search" placeholder="Search here" /> 
-            <button></button>
-          </div>
+          // <div className={classes.header__content__nav__search}>
+            <Autocomplete className={classes.header__content__nav__searchbar}
+              disablePortal
+              id="search-bar"
+              onChange={handleSearch}
+              options={searchOptions}
+              renderInput={(params) => <TextField {...params} label="Movie" />}  
+            />
+          // </div>
         }
         <nav 
           className={`${classes.header__content__nav} ${
