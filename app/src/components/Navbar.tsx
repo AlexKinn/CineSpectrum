@@ -40,10 +40,14 @@ const Navbar: React.FunctionComponent = () => {
     { label: 'option1', id: 1},
     { label: 'option2', id: 2}
   ];
-  const handleSearch = (event: SyntheticEvent<Element, Event>, value: { label: string; id: number; }) => {
-    return redirect("/");
-  }
+  // const handleSearch = (event: any, value: { label: string; id: number; }) => {
+  //   return redirect("/");
+  // }
   // (event: SyntheticEvent<Element, Event>, value: { label: string; id: number; } 
+  const runSearch = () => {
+    console.error("SEARCH RAN");
+    return redirect("/my-list");
+  }
 
   return ( 
     <header className={classes.header}>
@@ -56,7 +60,7 @@ const Navbar: React.FunctionComponent = () => {
             <Autocomplete className={classes.header__content__nav__searchbar}
               disablePortal
               id="search-bar"
-              onChange={handleSearch}
+              onKeyDown={runSearch}
               options={searchOptions}
               renderInput={(params) => <TextField {...params} label="Movie" />}  
             />

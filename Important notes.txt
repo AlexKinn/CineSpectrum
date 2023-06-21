@@ -1,1 +1,9 @@
 Autocomplete search as you type data calls to server should be throttled.
+
+
+Issues with IMDB:
+When viewing list of ratings, can't differntiate between movies/shows/games
+No categories?
+Cant list favourite actors
+Can you list favourite shows/games/movies?
+Can't rate actors performances
