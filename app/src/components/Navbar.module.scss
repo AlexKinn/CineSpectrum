@@ -1,5 +1,10 @@
 @import "../styles/variables.scss";
 
+.paper {
+    border: "5px solid black";
+    background: 'black';
+    color: 'white';
+}
 
 .header {
     background: $dark-color;
@@ -74,11 +79,6 @@
                 width: auto;
                 height: 100%;
                 position: static;
-            }
-            &__searchbar {
-                border: 2px solid rgb(192, 203, 212);
-                width: 300px;
-                background-color: beige;
             }
             ul {
                 list-style: none;
