@@ -22,17 +22,22 @@ const SearchBar: React.FunctionComponent = () => {
         <Autocomplete className={classes.searchbar}
             disablePortal
             id="search-bar"
+            renderOption={(props: object, option: any, state: object) => (
+                <div className={classes.paper__options} {...props}>
+                    <Link className={classes.searchbar__link} to="my-list"> 
+                        {option.label}
+                    </Link>      
+                </div>
+            )}
             options={searchOptions}
             classes={{ paper: classes.paper }}
             renderInput={(params) => (
-            // <Link to="/my-list">
                 <TextField {...params} label="Movie" onKeyDown={(e) => handleSearch(e)}
                 value={searchInput}
                     onChange={(e) => {
                       setSearchInput(e.target.value)
                     }}
                   />
-                // </Link>
               )}
         />
     );
