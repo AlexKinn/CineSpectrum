@@ -4,7 +4,7 @@
 .mylist {
     height: 100vw;
 
-    &__top {
+    &__background {
         position: absolute;
         width: 100%;
         height: 10em;
@@ -18,40 +18,6 @@
         justify-content: center;
         margin: 0 auto;
         border: 1px solid $primary-color;
-    }
-    &__title {
-        margin: 20px;
-        color: white;
-    }
-    &__banner {
-        width: 100%;
-        height: 40vh;
-        background: $primary-color;
-        border: 15px solid white;
-    }
-    &__categories {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: none;
-        justify-content: space-evenly;
-        width: 100%;
-        border-bottom: 1px solid $primary-color;
-    }
-    &__category {
-        list-style: none;
-    }
-    &__options {
-        
-        &__list {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: none;
-            justify-content: space-evenly;
-                
-            &__option {
-                list-style: none;
-            }
-        }
     }
     &__listBlock {
         width: 100%;
