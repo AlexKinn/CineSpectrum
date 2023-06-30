@@ -3,21 +3,31 @@
 
 .mylist {
     height: 100vw;
+    position: relative;
 
     &__background {
-        position: absolute;
-        width: 100%;
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
         height: 10em;
         background: $primary-color;
         z-index: -100;
     }
     &__main {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
         width: 50%;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        margin: 0 auto;
         border: 1px solid $primary-color;
+    }
+    
+    &__title {
+        margin: 20px;
+        color: white;
     }
     &__listBlock {
         width: 100%;

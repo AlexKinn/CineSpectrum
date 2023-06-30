@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classes from "./MyListTopSection.module.scss";
+import Option from './Option';
 
 
 function MyListTopSection() {
+    const [selectedOption, setSelectedOption] = useState("All Shows");
 
     return (
         <div className={classes.top}>
-            <h1 className={classes.top__title}>Website title</h1>
             <div className={classes.top__banner}>
               Banner
             </div>
@@ -16,30 +17,45 @@ function MyListTopSection() {
               </li>
               <li className={classes.top__category}>
                 Shows
-              </li>
+              </li> 
               <li className={classes.top__category}>
                 Movies
               </li>
             </ul>
             <div className={classes.top__options}>
               <ul className={classes.top__options__list}>
-                <li className={classes.top__options__list__option}>
-                  All Shows
+                <Option 
+                    text={"All Shows"}
+                    onClick={setSelectedOption}
+                    className={classes.top__options__list__option}
+                />
+                <li>
+                    <button className={classes.top__options__list__option}
+                    onClick={() => {setSelectedOption("Currently Watching")}} >
+                        Currently Watching
+                    </button>
                 </li>
-                <li className={classes.top__options__list__option}>
-                  Currently Watching
+                <li>
+                    <button className={classes.top__options__list__option}
+                    onClick={() => {setSelectedOption("Currently Watching")}} >
+                        Completed
+                    </button>
                 </li>
-                <li className={classes.top__options__list__option}>
-                  Completed
+                <li>
+                    <button className={classes.top__options__list__option}
+                    onClick={() => {setSelectedOption("Currently Watching")}} >
+                        On Hold
+                    </button>
                 </li>
-                <li className={classes.top__options__list__option}>
-                  On Hold
+                <li>
+                    <button className={classes.top__options__list__option}>
+                        Dropped
+                    </button>
                 </li>
-                <li className={classes.top__options__list__option}>
-                  Dropped
-                </li>
-                <li className={classes.top__options__list__option}>
-                  Plan to Watch
+                <li>
+                    <button className={classes.top__options__list__option}>
+                        Plan to Watch
+                    </button>
                 </li>
               </ul>
             </div>

@@ -9,6 +9,7 @@ function MyList() {
       <div className={classes.mylist}>
           <div className={classes.mylist__background}></div>
         <div className={classes.mylist__main}>
+          <h1 className={classes.mylist__title}>Website title</h1>
           <MyListTopSection />
           <div className={classes.mylist__listBlock}>
             <div className={classes.mylist__listContainer}>
