@@ -1,20 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./MyList.module.scss";
 import MyListTopSection from "./MyListTopSection";
 
 
 function MyList() {
 
+  const options = [
+    "All Shows",
+    "Currently Watching",
+    "Completed",
+    "On Hold",
+    "Dropped",
+    "Plan to Watch"
+  ]
+  const [selectedOption, setSelectedOption] = useState(options[0]);
+
+
     return (  
       <div className={classes.mylist}>
           <div className={classes.mylist__background}></div>
         <div className={classes.mylist__main}>
           <h1 className={classes.mylist__title}>Website title</h1>
-          <MyListTopSection />
+          <MyListTopSection setSelectedOption={setSelectedOption} options={options}
+          selectedOption={selectedOption}/>
           <div className={classes.mylist__listBlock}>
             <div className={classes.mylist__listContainer}>
               <div className={classes.mylist__listBlock__listInfo}>
-                <h1 className={classes.mylist__listTitle}>All shows</h1>
+                <h1 className={classes.mylist__listTitle}> { selectedOption } </h1>
                 <ul className={classes.mylist__listHeaders}>
                   <li className={classes.mylist__listHeaders__header}>
                     #

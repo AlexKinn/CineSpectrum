@@ -3,8 +3,47 @@ import classes from "./MyListTopSection.module.scss";
 import Option from './Option';
 
 
-function MyListTopSection() {
-    const [selectedOption, setSelectedOption] = useState("All Shows");
+function MyListTopSection( {options, selectedOption, setSelectedOption} 
+    : {options: string[], selectedOption: string, setSelectedOption: React.Dispatch<React.SetStateAction<string>>} ) {
+
+    
+    const renderOptions = (
+        options.map((option)=> {
+            return(
+                <Option 
+                    text={option}
+                    onClick={(e: { preventDefault: () => void; }) => {
+                        e.preventDefault();
+                        setSelectedOption(option);
+                    }}
+                    className={selectedOption === option 
+                        ? classes.top__options__list__selectedOption 
+                        : classes.top__options__list__option
+                    }
+                />
+            )
+        })
+    )
+
+    const categories = [
+        "Shows and Movies",
+        "Shows",
+        "Movies"
+    ]
+    const renderCategories = (
+        categories.map((category) => {
+            return(
+                <li>
+                    <button className={classes.top__categories__category}>
+                        {category}
+                    </button>
+                </li>
+            )
+        })
+    )
+
+    
+
 
     return (
         <div className={classes.top}>
@@ -12,51 +51,11 @@ function MyListTopSection() {
               Banner
             </div>
             <ul className={classes.top__categories}>
-              <li className={classes.top__category}>
-                Shows and Movies
-              </li>
-              <li className={classes.top__category}>
-                Shows
-              </li> 
-              <li className={classes.top__category}>
-                Movies
-              </li>
+                {renderCategories}
             </ul>
             <div className={classes.top__options}>
               <ul className={classes.top__options__list}>
-                <Option 
-                    text={"All Shows"}
-                    onClick={setSelectedOption}
-                    className={classes.top__options__list__option}
-                />
-                <li>
-                    <button className={classes.top__options__list__option}
-                    onClick={() => {setSelectedOption("Currently Watching")}} >
-                        Currently Watching
-                    </button>
-                </li>
-                <li>
-                    <button className={classes.top__options__list__option}
-                    onClick={() => {setSelectedOption("Currently Watching")}} >
-                        Completed
-                    </button>
-                </li>
-                <li>
-                    <button className={classes.top__options__list__option}
-                    onClick={() => {setSelectedOption("Currently Watching")}} >
-                        On Hold
-                    </button>
-                </li>
-                <li>
-                    <button className={classes.top__options__list__option}>
-                        Dropped
-                    </button>
-                </li>
-                <li>
-                    <button className={classes.top__options__list__option}>
-                        Plan to Watch
-                    </button>
-                </li>
+                {renderOptions}
               </ul>
             </div>
         </div>
