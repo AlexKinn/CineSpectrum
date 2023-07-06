@@ -1,0 +1,29 @@
+@import '/src/styles/variables.scss';
+
+.home {
+    height: 100rem;
+    background-color: $light-color;
+    &__top {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        height: 35%;
+        margin: 10px;
+
+        &__display {
+            border: 1px solid red;
+            &__img {
+                    
+            }
+        }
+        &__sidebar {
+            border: 1px solid black;
+            padding: 0;
+            
+            &__sidebarItem {
+                padding: 0;
+            }
+        }
+    }
+}
