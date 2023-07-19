@@ -12,18 +12,44 @@
         margin: 10px;
 
         &__display {
-            border: 1px solid red;
-            &__img {
-                    
+            overflow: hidden;
+            width: 20%;
+            position: relative;
+            margin: 10px;
+
+            &__imgContainer {
+                position: absolute;
+
+                &__img {
+                    overflow: hidden;
+                }    
+            }
+            &__directionalButton {
+                border: white 1px solid;
+                border-radius: 10%;
+                color: white;
+                background-color: rgba(0, 0, 0, 0.5);
+
+                &:hover {
+                    color: darkgoldenrod;
+                    background-color: rgba(0, 0, 0, 0.5);
+                }
+            }
+            &__backButton {
+                position: absolute;
+                left: 0%;
+                top: 50%;
+            }
+            &__forwardButton {
+                position: absolute;
+                right: 0%;
+                top: 50%;
             }
         }
         &__sidebar {
             border: 1px solid black;
-            padding: 0;
-            
-            &__sidebarItem {
-                padding: 0;
-            }
+            padding: 0px;
+            margin: 10px;
         }
     }
 }
