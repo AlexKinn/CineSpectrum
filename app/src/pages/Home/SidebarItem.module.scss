@@ -4,22 +4,31 @@
     padding: 0;
 
     &__card {
-        // padding: 0;
-        display: flex;
-        flex-direction: column;
+        width: 400px;
+        height: 180px;
+        background-color: $sidebar-color;
+
+        &__content {
+            padding: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            color: white;
 
 
-        &__img {
-            width: 20%;
-            // &:hover {
-                // }
-        }
+            &__img {
+                max-width: 88px;
+                height: auto;
+                // &:hover {
+                    // }
+            }
 
-        &__mainText {
-            font-size: 1.4em
-        }
-        &__secondaryText {
-            
+            &__mainText {
+                font-size: 1.4em
+            }
+            &__secondaryText {
+                
+            }
         }
     }
 }
