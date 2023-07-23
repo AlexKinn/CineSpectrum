@@ -3,6 +3,7 @@ import classes from "./Home.module.scss";
 import SidebarItem from "./SidebarItem";
 import { Card, CardActionArea, CardMedia, IconButton, List, ListItem, StyledEngineProvider } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
+import Display from "./Display";
 
 
 
@@ -43,16 +44,27 @@ const topPosts = [
 
 export default function Home() {
     const [selectedPostIndex, setSelectedPostIndex] = useState(0);
+    const [slidingLeft, setSlidingLeft] = useState(false);
+    const [slidingRight, setSlidingRight] = useState(false);
     
     const nextPost = () => {
-        if(selectedPostIndex == topPosts.length-1) {
-            setSelectedPostIndex(0);
-        }
-        else {
-            setSelectedPostIndex(selectedPostIndex+1);
-        }
+        setSlidingLeft(true);
+
+        setTimeout(() => {
+            if(selectedPostIndex == topPosts.length-1) {
+                setSelectedPostIndex(0);
+            }
+            else {
+                setSelectedPostIndex(selectedPostIndex+1);
+            }
+            setSlidingLeft(false);
+        }, 500)
+    }
+    const timeout = () => {
+
     }
     const previousPost = () => {
+        setSlidingRight(false);
         if(selectedPostIndex == 0) {
             setSelectedPostIndex(topPosts.length-1);
         }
@@ -119,33 +131,37 @@ export default function Home() {
         <StyledEngineProvider injectFirst>
         <div className={classes.home}>
             <div className={classes.home__top}>
-                <Card className={classes.home__top__display}>
-                    <CardActionArea>
-                        <CardMedia className={classes.home__top__display__posterImg}
-                            component="img"
-                            image={topPosts[selectedPostIndex].poster}
-                            alt="mainImage"
+                <div className={classes.home__top__display}>
+                    <div className={classes.home__top__display__leftDisplay}>
+                        <Display
+                            poster={ topPosts[selectedPostIndex].poster }
+                            image={ topPosts[selectedPostIndex].image }
+                            previousPost={ previousPost }
+                            nextPost={ nextPost }
                         />
-                    </CardActionArea>
-                    {/* <div className={classes.home__top__display__smallImgContainer}> */}
-                        <CardMedia className={classes.home__top__display__smallImgContainer__smallImg} 
-                            component="img"
-                            image={topPosts[selectedPostIndex].image}
+                    </div>
+                    <div className={`${classes.home__top__display__mainDisplay}
+                             ${slidingLeft && classes.home__top__display__slideLeft}
+                        `}>
+                        <Display
+                            poster={ topPosts[selectedPostIndex].poster }
+                            image={ topPosts[selectedPostIndex].image }
+                            previousPost={previousPost}
+                            nextPost={nextPost}
                         />
-                    {/* </div> */}
-                    <IconButton aria-label="previous option"
-                        className={`${classes.home__top__display__backButton} 
-                                    ${classes.home__top__display__directionalButton}`}
-                        onClick={previousPost}>
-                        <ArrowBackIos />
-                    </IconButton>
-                    <IconButton aria-label="next option" 
-                        className={`${classes.home__top__display__forwardButton} 
-                                    ${classes.home__top__display__directionalButton}`}
-                        onClick={nextPost} >
-                        <ArrowForwardIos />
-                    </IconButton>
-                </Card>
+                    </div>
+                    <div className={`${classes.home__top__display__rightDisplay}
+                             ${slidingLeft && classes.home__top__display__slideLeft}
+                        `}>
+                        { slidingLeft && 
+                            <Display
+                            poster={ topPosts[selectedPostIndex+1].poster }
+                            image={ topPosts[selectedPostIndex+1].image }
+                            previousPost={previousPost}
+                            nextPost={nextPost}
+                        />}
+                    </div>
+                </div>
                 <List className={classes.home__top__sidebar}>
                     {renderSidebarItems2()}
                 </List>

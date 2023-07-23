@@ -19,45 +19,51 @@
             width: 850px;
             position: relative;
             margin: 10px;
-
-            &__posterImg {
+            &__mainDisplay {
                 position: absolute;
+                height: 100%;
                 width: 100%;
-                // height: auto;
-
-                // overflow: hidden;
+                left: 0;
+                top: 0;
             }
-            &__smallImgContainer {
-
-                &__smallImg {
-                    position: absolute;
-                    max-width: 165px;
-                    height: auto;
-                    // z-index: 100;
-                    bottom: 0;
-                    left: 15px;
-                }
-            }
-            &__directionalButton {
-                border-radius: 10%;
-                top: 30%;
-                border: white 1px solid;
-                background-color: rgba(0, 0, 0, 0.5);
-                color: white;                            
-                &:hover {
-                    color: darkgoldenrod;
-                    background-color: rgba(0, 0, 0, 0.5);
-                }
-            }
-            &__backButton {
+            &__leftDisplay {
                 position: absolute;
-                left: 0%;
+                height: 100%;
+                width: 100%;
+                right: 850px;
+                top: 0;
+
             }
-            &__forwardButton {
+            &__rightDisplay {
                 position: absolute;
-                right: 0%;
+                height: 100%;
+                width: 100%;
+                left: 850px;
+                top: 0;                
             }
+            &__slideLeft {
+                animation: slideLeft 0.5s forwards;
+                -webkit-animation: slideLeft 0.5s forwards;
+            }
+            @keyframes slideLeft {
+                100% { transform: translateX(-100%); }
+            }
+            @-webkit-keyframes slideLeft {
+                100% { -webkit-transform: translateX(-100%); }
+            }
+            &__slideRight {
+                animation: slideRight 0.5s forwards;
+                -webkit-animation: slideRight 0.5s forwards;
+            }
+            @keyframes slideRight {
+                100% { transform: translateX(100%); }
+            }
+            @-webkit-keyframes slideRight {
+                100% { -webkit-transform: translateX(100%); }
+            }
+            
         }
+        
         &__sidebar {
             // display: flex;
             // flex-direction: column;
