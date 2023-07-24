@@ -22,20 +22,6 @@ function Display(props: any) {
                 image={props.image}
             />
             {/* </div> */}
-            <IconButton aria-label="previous option"
-                className={`${classes.display__backButton} 
-                            ${classes.display__directionalButton}`}
-                onClick={props.previousPost}
-            >
-                <ArrowBackIos />
-            </IconButton>
-            <IconButton aria-label="next option" 
-                className={`${classes.display__forwardButton} 
-                            ${classes.display__directionalButton}`}
-                onClick={props.nextPost} 
-            >
-                <ArrowForwardIos />
-            </IconButton>
         </Card>
     )
 }

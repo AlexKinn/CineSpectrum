@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import classes from "./Home.module.scss";
+
+// import variables from '../../styles/variables.scss';
+
 import SidebarItem from "./SidebarItem";
 import { Card, CardActionArea, CardMedia, IconButton, List, ListItem, StyledEngineProvider } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
@@ -51,27 +54,39 @@ export default function Home() {
         setSlidingLeft(true);
 
         setTimeout(() => {
-            if(selectedPostIndex == topPosts.length-1) {
-                setSelectedPostIndex(0);
-            }
-            else {
-                setSelectedPostIndex(selectedPostIndex+1);
-            }
+            setSelectedPostIndex(getNextPostIndex());
             setSlidingLeft(false);
-        }, 500)
-    }
-    const timeout = () => {
-
-    }
-    const previousPost = () => {
-        setSlidingRight(false);
-        if(selectedPostIndex == 0) {
-            setSelectedPostIndex(topPosts.length-1);
+        }, 500);
+    };
+    const getNextPostIndex = () => {
+        if(selectedPostIndex == topPosts.length-1) {
+            return 0;
         }
         else {
-            setSelectedPostIndex(selectedPostIndex-1);
+            return selectedPostIndex+1;
         }
+    };
+    // const slideTimeout = (duration, callback) => {
+
+    // }
+    const previousPost = () => {
+        setSlidingRight(true);
+
+        setTimeout(() => {
+            setSelectedPostIndex(getPreviousPostIndex());
+            setSlidingRight(false);
+        }, 500);
     }
+    const getPreviousPostIndex = () => {
+        if(selectedPostIndex == 0) {
+            return topPosts.length-1;
+        }
+        else {
+            return selectedPostIndex-1;
+        }
+    };
+
+
     const renderSidebarItems = (    
         [...topPosts, ...topPosts].slice(selectedPostIndex+1, selectedPostIndex+5)
         .map((post, index) => {
@@ -132,16 +147,21 @@ export default function Home() {
         <div className={classes.home}>
             <div className={classes.home__top}>
                 <div className={classes.home__top__display}>
-                    <div className={classes.home__top__display__leftDisplay}>
-                        <Display
-                            poster={ topPosts[selectedPostIndex].poster }
-                            image={ topPosts[selectedPostIndex].image }
-                            previousPost={ previousPost }
-                            nextPost={ nextPost }
-                        />
+                    <div className={`${classes.home__top__display__leftDisplay}
+                             ${slidingRight && classes.home__top__display__slideRight}
+                        `}>  
+                        { slidingRight &&
+                            <Display
+                                poster={ topPosts[getPreviousPostIndex()].poster }
+                                image={ topPosts[getPreviousPostIndex()].image }
+                                previousPost={ previousPost }
+                                nextPost={ nextPost }
+                            />
+                        }
                     </div>
                     <div className={`${classes.home__top__display__mainDisplay}
                              ${slidingLeft && classes.home__top__display__slideLeft}
+                             ${slidingRight && classes.home__top__display__slideRight}
                         `}>
                         <Display
                             poster={ topPosts[selectedPostIndex].poster }
@@ -149,17 +169,32 @@ export default function Home() {
                             previousPost={previousPost}
                             nextPost={nextPost}
                         />
+                        <IconButton aria-label="previous option"
+                            className={`${classes.home__top__display__mainDisplay__backButton} 
+                                        ${classes.home__top__display__mainDisplay__directionalButton}`}
+                            onClick={previousPost}
+                        >
+                            <ArrowBackIos />
+                        </IconButton>
+                        <IconButton aria-label="next option" 
+                            className={`${classes.home__top__display__mainDisplay__forwardButton} 
+                                        ${classes.home__top__display__mainDisplay__directionalButton}`}
+                            onClick={nextPost} 
+                        >
+                            <ArrowForwardIos />
+                        </IconButton>
                     </div>
                     <div className={`${classes.home__top__display__rightDisplay}
                              ${slidingLeft && classes.home__top__display__slideLeft}
                         `}>
                         { slidingLeft && 
                             <Display
-                            poster={ topPosts[selectedPostIndex+1].poster }
-                            image={ topPosts[selectedPostIndex+1].image }
+                            poster={ topPosts[getNextPostIndex()].poster }
+                            image={ topPosts[getNextPostIndex()].image }
                             previousPost={previousPost}
                             nextPost={nextPost}
-                        />}
+                            />
+                        }
                     </div>
                 </div>
                 <List className={classes.home__top__sidebar}>

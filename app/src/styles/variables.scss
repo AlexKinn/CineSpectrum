@@ -9,6 +9,9 @@ $primary-color: rgb(162, 162, 246);
 $bg-color: rgb(244, 244, 255);
 $sidebar-color: rgb(30, 30, 30);
 
+// home page display sliding speed in seconds
+$sliding-speed: 0.3;
+
 // spacing
 $spacing-md: 16px;
 $spacing-lg: 32px;
@@ -26,4 +29,19 @@ $headerHeight: 80px;
             @content;
         }
     }
+}
+
+
+:export {
+    Poppins: $Poppins;
+    dark-color: $dark-color;
+    light-color: $light-color;
+    primary-color: $primary-color;
+    bg-color: $bg-color;
+    sidebar-color: $sidebar-color;
+    sliding-speed: $sliding-speed;
+    spacing-md: $spacing-md;
+    spacing-lg: $spacing-lg;
+    borderRadius: $borderRadius;
+    headerHeight: $headerHeight;
 }
