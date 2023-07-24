@@ -56,7 +56,7 @@ export default function Home() {
         setTimeout(() => {
             setSelectedPostIndex(getNextPostIndex());
             setSlidingLeft(false);
-        }, 500);
+        }, 300);
     };
     const getNextPostIndex = () => {
         if(selectedPostIndex == topPosts.length-1) {
@@ -75,7 +75,7 @@ export default function Home() {
         setTimeout(() => {
             setSelectedPostIndex(getPreviousPostIndex());
             setSlidingRight(false);
-        }, 500);
+        }, 300);
     }
     const getPreviousPostIndex = () => {
         if(selectedPostIndex == 0) {
@@ -147,6 +147,22 @@ export default function Home() {
         <div className={classes.home}>
             <div className={classes.home__top}>
                 <div className={classes.home__top__display}>
+                    <IconButton aria-label="previous option"
+                        className={`${classes.home__top__display__backButton} 
+                                    ${classes.home__top__display__directionalButton}`}
+                        onClick={previousPost}
+                        disabled={(slidingLeft || slidingRight) ? true : false}
+                    >
+                        <ArrowBackIos />
+                    </IconButton>
+                    <IconButton aria-label="next option" 
+                        className={`${classes.home__top__display__forwardButton} 
+                                    ${classes.home__top__display__directionalButton}`}
+                        onClick={nextPost} 
+                        disabled={(slidingLeft || slidingRight) ? true : false}
+                    >
+                        <ArrowForwardIos />
+                    </IconButton>
                     <div className={`${classes.home__top__display__leftDisplay}
                              ${slidingRight && classes.home__top__display__slideRight}
                         `}>  
@@ -169,20 +185,6 @@ export default function Home() {
                             previousPost={previousPost}
                             nextPost={nextPost}
                         />
-                        <IconButton aria-label="previous option"
-                            className={`${classes.home__top__display__mainDisplay__backButton} 
-                                        ${classes.home__top__display__mainDisplay__directionalButton}`}
-                            onClick={previousPost}
-                        >
-                            <ArrowBackIos />
-                        </IconButton>
-                        <IconButton aria-label="next option" 
-                            className={`${classes.home__top__display__mainDisplay__forwardButton} 
-                                        ${classes.home__top__display__mainDisplay__directionalButton}`}
-                            onClick={nextPost} 
-                        >
-                            <ArrowForwardIos />
-                        </IconButton>
                     </div>
                     <div className={`${classes.home__top__display__rightDisplay}
                              ${slidingLeft && classes.home__top__display__slideLeft}

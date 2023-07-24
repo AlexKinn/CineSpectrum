@@ -19,33 +19,32 @@
             width: 850px;
             position: relative;
             margin: 10px;
+            &__directionalButton {
+                border-radius: 10%;
+                top: 30%;
+                border: white 1px solid;
+                background-color: rgba(0, 0, 0, 0.5);
+                color: white;
+                z-index: 100;                   
+                &:hover {
+                    color: darkgoldenrod;
+                    background-color: rgba(0, 0, 0, 0.5);
+                }
+            }
+            &__backButton {
+                position: absolute;
+                left: 0%;
+            }
+            &__forwardButton {
+                position: absolute;
+                right: 0%;
+            }
             &__mainDisplay {
                 position: absolute;
                 height: 100%;
                 width: 100%;
                 left: 0;
                 top: 0;
-
-                &__directionalButton {
-                    border-radius: 10%;
-                    top: 30%;
-                    border: white 1px solid;
-                    background-color: rgba(0, 0, 0, 0.5);
-                    color: white;
-                    z-index: 100;                   
-                    &:hover {
-                        color: darkgoldenrod;
-                        background-color: rgba(0, 0, 0, 0.5);
-                    }
-                }
-                &__backButton {
-                    position: absolute;
-                    left: 0%;
-                }
-                &__forwardButton {
-                    position: absolute;
-                    right: 0%;
-                }
             }
             &__leftDisplay {
                 position: absolute;
