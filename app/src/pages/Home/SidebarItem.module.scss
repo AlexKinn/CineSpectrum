@@ -8,28 +8,92 @@
         height: 180px;
         background-color: $sidebar-color;
 
+        // &:hover {
+        //     .sidebarItem__card__content__img {
+        //         background-color: white;
+        //         max-width: 100px;
+        //     }
+        //     .sidebarItem__card__content__playButton {
+        //         color: yellow;
+        //     }
+        //     &__content__img {
+        //         background-color: white;
+        //         max-width: 100px;
+        //     }
+        //     &__playButton {
+        //         color: yellow;
+        //         border: 1px solid yellow;
+        //     }
+        //     &.__content__mainText {
+        //         color: yellow;
+        //     }
+        //     .sidebarItem__card__content__secondaryText {
+        //         color: yellow;
+        //     }
+        // }
+        &:hover {
+            .sidebarItem__card__content {
+                &__img {
+                    max-width: 100px;
+                }
+                &__playButton {
+                    color: yellow;
+                    border: 1px solid yellow;
+                }
+                &__mainText {
+                    color: yellow;
+                }
+                &__secondaryText {
+                    color: yellow;
+                }
+            }
+            // &__content__img {
+            //   background-color: white;
+            //   max-width: 100px;
+            // }
+            // &__content__playButton {
+            //   color: yellow;
+            // }
+            // &__content {
+            //   &__img {
+            //     background-color: white;
+            //     max-width: 100px;
+            //   }
+            //   &__playButton {
+            //     color: yellow;
+            //     border: 1px solid yellow;
+            //   }
+            //   &.__content__mainText {
+            //     color: yellow;
+            //   }
+            //   &__secondaryText {
+            //     color: yellow;
+            //   }
+            // }
+          }
+
         &__content {
             height: 100%;
             padding: 0;
             display: flex;
             flex-direction: row;
             justify-content: flex-start;
-            color: white;
-
 
             &__img {
                 max-width: 88px;
                 height: auto;
                 margin: 10px;
-                // &:hover {
-                    // }
             }
-
+            &__playButton {
+                color: white;
+                border: 1px solid white;
+            }
             &__mainText {
-                font-size: 1.3em;
+                font-size: 1.5em;
+                color: white;
             }
             &__secondaryText {
-                font-size: 1em;
+                font-size: 1.3em;
                 color: rgb(240, 240, 240);
             }
         }

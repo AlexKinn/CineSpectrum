@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from "./SidebarItem.module.scss";
-import { ListItem, Card, CardContent, CardMedia, CardActionArea, Typography, Box, StyledEngineProvider } from '@mui/material';
+import { ListItem, Card, CardContent, CardMedia, CardActionArea, Typography, Box, StyledEngineProvider, IconButton } from '@mui/material';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 function SidebarItem(props : any) {
  
@@ -16,6 +17,9 @@ function SidebarItem(props : any) {
                             alt={ props.mainText }
                         />
                         <CardContent>
+                            <IconButton className={classes.sidebarItem__card__content__playButton}>
+                                <PlayArrowIcon />
+                            </IconButton>
                             <Typography className={classes.sidebarItem__card__content__mainText}>
                                 {props.mainText}
                             </Typography>

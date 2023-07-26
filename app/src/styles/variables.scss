@@ -7,7 +7,8 @@ $dark-color: rgb(30, 30, 30);
 $light-color: rgb(255,255,255);
 $primary-color: rgb(162, 162, 246);
 $bg-color: rgb(244, 244, 255);
-$sidebar-color: rgb(30, 30, 30);
+$sidebar-color: $dark-color;
+$homepage-color: rgb(10, 10, 10);
 
 // home page display sliding speed in seconds
 $sliding-speed: 0.3;
@@ -39,6 +40,7 @@ $headerHeight: 80px;
     primary-color: $primary-color;
     bg-color: $bg-color;
     sidebar-color: $sidebar-color;
+    homepage-color: $homepage-color;
     sliding-speed: $sliding-speed;
     spacing-md: $spacing-md;
     spacing-lg: $spacing-lg;

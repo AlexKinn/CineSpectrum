@@ -4,9 +4,10 @@ import classes from "./Home.module.scss";
 // import variables from '../../styles/variables.scss';
 
 import SidebarItem from "./SidebarItem";
-import { Card, CardActionArea, CardMedia, IconButton, List, ListItem, StyledEngineProvider } from "@mui/material";
+import { Card, CardActionArea, CardMedia, Divider, IconButton, List, ListItem, StyledEngineProvider } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import Display from "./Display";
+import { To, useNavigate } from "react-router-dom";
 
 
 
@@ -85,61 +86,33 @@ export default function Home() {
             return selectedPostIndex-1;
         }
     };
+    const navigate = useNavigate();
+    const redirectTo = (path: To) => {
+        navigate(path);
+    }
 
-
-    const renderSidebarItems = (    
-        [...topPosts, ...topPosts].slice(selectedPostIndex+1, selectedPostIndex+5)
-        .map((post, index) => {
-            console.log("selectedPostIndex " + selectedPostIndex + " index " + index + " title " + topPosts[index].mainText)
-            if(index === selectedPostIndex) {
-                return null;
-            }
-            else {
-                return(
-                    <SidebarItem 
-                        listKey={post.mainText}
-                        image={post.image}   
-                        mainText={post.mainText}
-                        secondaryText={post.secondaryText}
-                    />
-                )
-            }
-        })
-    );
 
     const renderSidebarItems2 = () => {
         const sidebarItems = [];
         for(let i=1; i<4; i++) {
             let currentIndex = (selectedPostIndex+i) % topPosts.length;
             // if(currentIndex === selectedPostIndex) { return null; }
-            console.log("selectedPostIndex " + selectedPostIndex + " index " + currentIndex + " title " + topPosts[currentIndex].mainText)
             sidebarItems.push(
+                <>
                 <SidebarItem 
                     listKey={topPosts[currentIndex].mainText}
                     image={topPosts[currentIndex].image}   
                     mainText={topPosts[currentIndex].mainText}
                     secondaryText={topPosts[currentIndex].secondaryText}
                 />
+                <Divider />
+                </>
+                
             )
         }
         return sidebarItems;
     };
 
-
-        // const renderedList = [];
-        // for(let i=0; i<topPosts.length; i++) {
-        //     if(i === selectedPostIndex) {
-        //         continue;
-        //     }
-        //     renderedList.add(
-        //         <SidebarItem 
-        //                 key={post.mainText}
-        //                 image={post.image}   
-        //                 mainText={post.mainText}
-        //                 secondaryText={post.secondaryText}
-        //             />
-        //     )   
-        // }
     
     
     return(
@@ -149,20 +122,31 @@ export default function Home() {
                 <div className={classes.home__top__display}>
                     <IconButton aria-label="previous option"
                         className={`${classes.home__top__display__backButton} 
-                                    ${classes.home__top__display__directionalButton}`}
+                                    ${classes.home__top__display__directionalButton}
+                                    ${
+                                        (slidingLeft || slidingRight) 
+                                        && classes.home__top__display__disabledButton
+                                    }`}
                         onClick={previousPost}
-                        disabled={(slidingLeft || slidingRight) ? true : false}
+                        // disabled={(slidingLeft || slidingRight) ? true : false}
                     >
                         <ArrowBackIos />
                     </IconButton>
                     <IconButton aria-label="next option" 
                         className={`${classes.home__top__display__forwardButton} 
-                                    ${classes.home__top__display__directionalButton}`}
+                                    ${classes.home__top__display__directionalButton}
+                                    // 
+                                        // (slidingLeft || slidingRight) 
+                                        // && 
+                                        // classes.home__top__display__disabledButton
+                                    // }
+                                    `}
                         onClick={nextPost} 
                         disabled={(slidingLeft || slidingRight) ? true : false}
                     >
                         <ArrowForwardIos />
                     </IconButton>
+
                     <div className={`${classes.home__top__display__leftDisplay}
                              ${slidingRight && classes.home__top__display__slideRight}
                         `}>  
@@ -170,8 +154,9 @@ export default function Home() {
                             <Display
                                 poster={ topPosts[getPreviousPostIndex()].poster }
                                 image={ topPosts[getPreviousPostIndex()].image }
-                                previousPost={ previousPost }
-                                nextPost={ nextPost }
+                                mainText={ topPosts[getPreviousPostIndex()].mainText }
+                                secondaryText={ topPosts[getPreviousPostIndex()].secondaryText }
+                                path={ "/my-list" }    
                             />
                         }
                     </div>
@@ -182,8 +167,9 @@ export default function Home() {
                         <Display
                             poster={ topPosts[selectedPostIndex].poster }
                             image={ topPosts[selectedPostIndex].image }
-                            previousPost={previousPost}
-                            nextPost={nextPost}
+                            mainText={ topPosts[selectedPostIndex].mainText }
+                            secondaryText={ topPosts[selectedPostIndex].secondaryText }
+                            path={ "/my-list" }
                         />
                     </div>
                     <div className={`${classes.home__top__display__rightDisplay}
@@ -191,10 +177,11 @@ export default function Home() {
                         `}>
                         { slidingLeft && 
                             <Display
-                            poster={ topPosts[getNextPostIndex()].poster }
-                            image={ topPosts[getNextPostIndex()].image }
-                            previousPost={previousPost}
-                            nextPost={nextPost}
+                                poster={ topPosts[getNextPostIndex()].poster }
+                                image={ topPosts[getNextPostIndex()].image }
+                                mainText={ topPosts[getNextPostIndex()].mainText }
+                                secondaryText={ topPosts[getNextPostIndex()].secondaryText }
+                                path={ "/my-list" }    
                             />
                         }
                     </div>
