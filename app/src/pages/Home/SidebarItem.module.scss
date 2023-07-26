@@ -37,14 +37,14 @@
                     max-width: 100px;
                 }
                 &__playButton {
-                    color: yellow;
-                    border: 1px solid yellow;
+                    color: $hover-color;
+                    border-color: $hover-color;
                 }
                 &__mainText {
-                    color: yellow;
+                    color: $hover-color;
                 }
                 &__secondaryText {
-                    color: yellow;
+                    color: $hover-color;
                 }
             }
             // &__content__img {
