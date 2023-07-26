@@ -13,10 +13,16 @@ import { To, useNavigate } from "react-router-dom";
 
 const topPosts = [
     {
-        poster: "witcherPoster.jpg",
-        image: "witcherIMG.jpg",
+        poster: "https://m.media-amazon.com/images/M/MV5BZmY0MDRhYTMtZGJlYS00NDJlLThkNTAtNWZjYjFjYjgyODAxXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._CR400,64,3247,1827_QL75_UX1000_CR0,0,1000,563_.jpg",
+        image: "https://m.media-amazon.com/images/M/MV5BMDEwOWVlY2EtMWI0ZC00OWVmLWJmZGItYTk3YjYzN2Y0YmFkXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_QL75_UX280_CR0,0,280,414_.jpg",
         mainText: "The Witcher",
         secondaryText: "Watch the New Season 3 Trailer"
+    },
+    {
+        poster: "https://m.media-amazon.com/images/M/MV5BZTE3MmVjYjQtZGU2ZC00MjJjLWFmZjktZmQxMmM4MTc3YjBhXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._CR467,28,3093,1740_QL75_UX1000_CR0,0,1000,563_.jpg",
+        image: "https://m.media-amazon.com/images/M/MV5BYzczMzllN2UtNDJmOS00MmE5LWE2MWYtNGEwODcwMDc2M2YyXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_QL75_UY414_CR8,0,280,414_.jpg",
+        mainText: '"One Piece"',
+        secondaryText: "The Legendary Manga Is Coming to Netflix"
     },
     {   
         poster: "oppenheimerPoster.jpg",
@@ -86,10 +92,10 @@ export default function Home() {
             return selectedPostIndex-1;
         }
     };
-    const navigate = useNavigate();
-    const redirectTo = (path: To) => {
-        navigate(path);
-    }
+    // const navigate = useNavigate();
+    // const redirectTo = (path: To) => {
+    //     navigate(path);
+    // }
 
 
     const renderSidebarItems2 = () => {
