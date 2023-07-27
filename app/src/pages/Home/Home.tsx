@@ -129,26 +129,18 @@ export default function Home() {
                     <IconButton aria-label="previous option"
                         className={`${classes.home__top__display__backButton} 
                                     ${classes.home__top__display__directionalButton}
-                                    ${
-                                        (slidingLeft || slidingRight) 
-                                        && classes.home__top__display__disabledButton
-                                    }`}
-                        onClick={previousPost}
-                        // disabled={(slidingLeft || slidingRight) ? true : false}
+                                  `}
+                        {...!(slidingLeft || slidingRight) ? {onClick: previousPost} : {}}
+                        disableRipple
                     >
                         <ArrowBackIos />
                     </IconButton>
                     <IconButton aria-label="next option" 
                         className={`${classes.home__top__display__forwardButton} 
                                     ${classes.home__top__display__directionalButton}
-                                    // 
-                                        // (slidingLeft || slidingRight) 
-                                        // && 
-                                        // classes.home__top__display__disabledButton
-                                    // }
-                                    `}
-                        onClick={nextPost} 
-                        disabled={(slidingLeft || slidingRight) ? true : false}
+                                  `}
+                        {...!(slidingLeft || slidingRight) ? {onClick: nextPost} : {}}
+                        disableRipple            
                     >
                         <ArrowForwardIos />
                     </IconButton>
