@@ -1,15 +1,18 @@
 import React from 'react';
 import classes from "./SidebarItem.module.scss";
-import { ListItem, Card, CardContent, CardMedia, CardActionArea, Typography, Box, StyledEngineProvider, IconButton } from '@mui/material';
+import { ListItem, Card, CardContent, CardMedia, CardActionArea, Typography, Box, StyledEngineProvider, IconButton, Divider} from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import { Link } from 'react-router-dom';
 
 function SidebarItem(props : any) {
  
     return(
-        // <StyledEngineProvider injectFirst>
         <ListItem className={classes.sidebarItem} key={ props.listKey }>
             <Card className={classes.sidebarItem__card}>
-                <CardActionArea className={classes.sidebarItem__card__content}>
+                <Link className={classes.sidebarItem__card__content} 
+                    to={ props.path }
+                    state={ props.data }
+                >
                     {/* <div > */}
                         <CardMedia className={classes.sidebarItem__card__content__img}
                             component="img"
@@ -28,10 +31,9 @@ function SidebarItem(props : any) {
                             </Typography>
                         </CardContent>
                     {/* </div> */}
-                </CardActionArea>
+                </Link>
             </Card>
         </ListItem>
-        // {/* </StyledEngineProvider> */}
     )
 }
 

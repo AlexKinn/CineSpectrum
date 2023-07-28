@@ -4,6 +4,7 @@ import Home from './pages/Home/Home';
 import MyList from './pages/MyList/MyList';
 import Navbar from './components/Navbar';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MoviePage from './pages/MoviePage';
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/my-list" element={<MyList />} />
+              <Route path="/movie/:moviePath" element={<MoviePage />} />
             </Routes>        
         </BrowserRouter>
       </header>

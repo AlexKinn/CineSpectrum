@@ -16,37 +16,43 @@ const topPosts = [
         poster: "https://m.media-amazon.com/images/M/MV5BZmY0MDRhYTMtZGJlYS00NDJlLThkNTAtNWZjYjFjYjgyODAxXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._CR400,64,3247,1827_QL75_UX1000_CR0,0,1000,563_.jpg",
         image: "https://m.media-amazon.com/images/M/MV5BMDEwOWVlY2EtMWI0ZC00OWVmLWJmZGItYTk3YjYzN2Y0YmFkXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_QL75_UX280_CR0,0,280,414_.jpg",
         mainText: "The Witcher",
-        secondaryText: "Watch the New Season 3 Trailer"
+        secondaryText: "Watch the New Season 3 Trailer",
+        path: "the-witcher-2019"
     },
     {
         poster: "https://m.media-amazon.com/images/M/MV5BZTE3MmVjYjQtZGU2ZC00MjJjLWFmZjktZmQxMmM4MTc3YjBhXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._CR467,28,3093,1740_QL75_UX1000_CR0,0,1000,563_.jpg",
         image: "https://m.media-amazon.com/images/M/MV5BYzczMzllN2UtNDJmOS00MmE5LWE2MWYtNGEwODcwMDc2M2YyXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_QL75_UY414_CR8,0,280,414_.jpg",
         mainText: '"One Piece"',
-        secondaryText: "The Legendary Manga Is Coming to Netflix"
+        secondaryText: "The Legendary Manga Is Coming to Netflix",
+        path: "one-piece-2023"
     },
     {   
         poster: "oppenheimerPoster.jpg",
         image: "oppenheimerIMG.jpg",
         mainText: "Meet the Cast of 'Oppenheimer'",
-        secondaryText: "Cillian Murphy, RDJ & Others Share Their Experience"
+        secondaryText: "Cillian Murphy, RDJ & Others Share Their Experience",
+        path: "oppenheimer-2023"
     }, 
     {
         poster: "wonkaPoster.jpg",
         image: "wonkaIMG.jpg",
         mainText: "Timothée Chalamet Stars in 'Wonka'",
-        secondaryText: "Watch the First Trailer"
+        secondaryText: "Watch the First Trailer",
+        path: "wonka-2023"
     },
     {
         poster: "https://m.media-amazon.com/images/M/MV5BYTc1YWU2NTgtNGI1Mi00N2I2LWE4ODUtZDY4MWJiZGE4NjE3XkEyXkFqcGdeQXVyMTUzMTg2ODkz._CR278,399,3277,1843_QL75_UY281_CR0,0,500,281_.jpg",
         image: "blueBeetleIMG.jpg",
         mainText: "'Blue Beetle'",
-        secondaryText: "Watch the Final Trailer"
+        secondaryText: "Watch the Final Trailer",
+        path: "blue-beetle-2023"
     },
     {
         poster: "ahsokaPoster.jpg",
         image: "ahsokaIMG.jpg",
         mainText: "Ahsoka",
-        secondaryText: "Watch the Trailer"
+        secondaryText: "Watch the Trailer",
+        path: "ahsoka-2023"
     }
 ];
 
@@ -110,6 +116,8 @@ export default function Home() {
                     image={topPosts[currentIndex].image}   
                     mainText={topPosts[currentIndex].mainText}
                     secondaryText={topPosts[currentIndex].secondaryText}
+                    path= { topPosts[currentIndex].path }
+                    data={ topPosts[currentIndex] }
                 />
                 <Divider />
                 </>
@@ -154,7 +162,7 @@ export default function Home() {
                                 image={ topPosts[getPreviousPostIndex()].image }
                                 mainText={ topPosts[getPreviousPostIndex()].mainText }
                                 secondaryText={ topPosts[getPreviousPostIndex()].secondaryText }
-                                path={ "/my-list" }    
+                                path={ topPosts[getPreviousPostIndex()].path }    
                             />
                         }
                     </div>
@@ -167,7 +175,7 @@ export default function Home() {
                             image={ topPosts[selectedPostIndex].image }
                             mainText={ topPosts[selectedPostIndex].mainText }
                             secondaryText={ topPosts[selectedPostIndex].secondaryText }
-                            path={ "/my-list" }
+                            path={ topPosts[selectedPostIndex].path }    
                         />
                     </div>
                     <div className={`${classes.home__top__display__rightDisplay}
@@ -179,7 +187,7 @@ export default function Home() {
                                 image={ topPosts[getNextPostIndex()].image }
                                 mainText={ topPosts[getNextPostIndex()].mainText }
                                 secondaryText={ topPosts[getNextPostIndex()].secondaryText }
-                                path={ "/my-list" }    
+                                path={ topPosts[getNextPostIndex()].path }    
                             />
                         }
                     </div>
