@@ -10,7 +10,7 @@ function SidebarItem(props : any) {
         <ListItem className={classes.sidebarItem} key={ props.listKey }>
             <Card className={classes.sidebarItem__card}>
                 <Link className={classes.sidebarItem__card__content} 
-                    to={ props.path }
+                    to={`/movies/${props.path}`}
                     state={ props.data }
                 >
                     {/* <div > */}

@@ -4,15 +4,14 @@ import classes from "./Home.module.scss";
 // import variables from '../../styles/variables.scss';
 
 import SidebarItem from "./SidebarItem";
-import { Card, CardActionArea, CardMedia, Divider, IconButton, List, ListItem, StyledEngineProvider } from "@mui/material";
+import { Divider, IconButton, List, StyledEngineProvider } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import Display from "./Display";
-import { To, useNavigate } from "react-router-dom";
-
 
 
 const topPosts = [
     {
+        // type: "show",
         poster: "https://m.media-amazon.com/images/M/MV5BZmY0MDRhYTMtZGJlYS00NDJlLThkNTAtNWZjYjFjYjgyODAxXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._CR400,64,3247,1827_QL75_UX1000_CR0,0,1000,563_.jpg",
         image: "https://m.media-amazon.com/images/M/MV5BMDEwOWVlY2EtMWI0ZC00OWVmLWJmZGItYTk3YjYzN2Y0YmFkXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_QL75_UX280_CR0,0,280,414_.jpg",
         mainText: "The Witcher",
@@ -20,6 +19,7 @@ const topPosts = [
         path: "the-witcher-2019"
     },
     {
+        // type: "movie",
         poster: "https://m.media-amazon.com/images/M/MV5BZTE3MmVjYjQtZGU2ZC00MjJjLWFmZjktZmQxMmM4MTc3YjBhXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._CR467,28,3093,1740_QL75_UX1000_CR0,0,1000,563_.jpg",
         image: "https://m.media-amazon.com/images/M/MV5BYzczMzllN2UtNDJmOS00MmE5LWE2MWYtNGEwODcwMDc2M2YyXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_QL75_UY414_CR8,0,280,414_.jpg",
         mainText: '"One Piece"',
@@ -27,6 +27,7 @@ const topPosts = [
         path: "one-piece-2023"
     },
     {   
+        // type: "movie",
         poster: "oppenheimerPoster.jpg",
         image: "oppenheimerIMG.jpg",
         mainText: "Meet the Cast of 'Oppenheimer'",
@@ -34,6 +35,7 @@ const topPosts = [
         path: "oppenheimer-2023"
     }, 
     {
+        // type: "movie",
         poster: "wonkaPoster.jpg",
         image: "wonkaIMG.jpg",
         mainText: "Timothée Chalamet Stars in 'Wonka'",
@@ -41,6 +43,7 @@ const topPosts = [
         path: "wonka-2023"
     },
     {
+        // type: "movie",
         poster: "https://m.media-amazon.com/images/M/MV5BYTc1YWU2NTgtNGI1Mi00N2I2LWE4ODUtZDY4MWJiZGE4NjE3XkEyXkFqcGdeQXVyMTUzMTg2ODkz._CR278,399,3277,1843_QL75_UY281_CR0,0,500,281_.jpg",
         image: "blueBeetleIMG.jpg",
         mainText: "'Blue Beetle'",
@@ -48,6 +51,7 @@ const topPosts = [
         path: "blue-beetle-2023"
     },
     {
+        // type: "movie",
         poster: "ahsokaPoster.jpg",
         image: "ahsokaIMG.jpg",
         mainText: "Ahsoka",
@@ -78,10 +82,8 @@ export default function Home() {
         else {
             return selectedPostIndex+1;
         }
+        return (selectedPostIndex + 1) % topPosts.length
     };
-    // const slideTimeout = (duration, callback) => {
-
-    // }
     const previousPost = () => {
         setSlidingRight(true);
 
@@ -98,17 +100,11 @@ export default function Home() {
             return selectedPostIndex-1;
         }
     };
-    // const navigate = useNavigate();
-    // const redirectTo = (path: To) => {
-    //     navigate(path);
-    // }
 
-
-    const renderSidebarItems2 = () => {
+    const renderSidebarItems = () => {
         const sidebarItems = [];
-        for(let i=1; i<4; i++) {
-            let currentIndex = (selectedPostIndex+i) % topPosts.length;
-            // if(currentIndex === selectedPostIndex) { return null; }
+        for(let i=0; i<3; i++) {
+            let currentIndex = (selectedPostIndex+1+i) % topPosts.length;
             sidebarItems.push(
                 <>
                 <SidebarItem 
@@ -126,6 +122,8 @@ export default function Home() {
         }
         return sidebarItems;
     };
+
+
 
     
     
@@ -152,11 +150,10 @@ export default function Home() {
                     >
                         <ArrowForwardIos />
                     </IconButton>
-
-                    <div className={`${classes.home__top__display__leftDisplay}
-                             ${slidingRight && classes.home__top__display__slideRight}
-                        `}>  
-                        { slidingRight &&
+                    { slidingRight &&
+                        <div className={`${classes.home__top__display__leftDisplay}
+                                ${slidingRight && classes.home__top__display__slideRight}
+                            `}>  
                             <Display
                                 poster={ topPosts[getPreviousPostIndex()].poster }
                                 image={ topPosts[getPreviousPostIndex()].image }
@@ -164,8 +161,8 @@ export default function Home() {
                                 secondaryText={ topPosts[getPreviousPostIndex()].secondaryText }
                                 path={ topPosts[getPreviousPostIndex()].path }    
                             />
-                        }
-                    </div>
+                        </div>
+                    }
                     <div className={`${classes.home__top__display__mainDisplay}
                              ${slidingLeft && classes.home__top__display__slideLeft}
                              ${slidingRight && classes.home__top__display__slideRight}
@@ -178,10 +175,10 @@ export default function Home() {
                             path={ topPosts[selectedPostIndex].path }    
                         />
                     </div>
-                    <div className={`${classes.home__top__display__rightDisplay}
-                             ${slidingLeft && classes.home__top__display__slideLeft}
-                        `}>
-                        { slidingLeft && 
+                    { slidingLeft && 
+                        <div className={`${classes.home__top__display__rightDisplay}
+                                ${slidingLeft && classes.home__top__display__slideLeft}
+                            `}>
                             <Display
                                 poster={ topPosts[getNextPostIndex()].poster }
                                 image={ topPosts[getNextPostIndex()].image }
@@ -189,11 +186,11 @@ export default function Home() {
                                 secondaryText={ topPosts[getNextPostIndex()].secondaryText }
                                 path={ topPosts[getNextPostIndex()].path }    
                             />
-                        }
-                    </div>
+                        </div>
+                    }
                 </div>
                 <List className={classes.home__top__sidebar}>
-                    {renderSidebarItems2()}
+                    {renderSidebarItems()}
                 </List>
             </div>
         </div>
