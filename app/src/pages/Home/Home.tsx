@@ -77,13 +77,16 @@ export default function Home() {
             }
             const API_URL = process.env.REACT_APP_API_URL + "/trendingMovies";
             console.log(API_URL);
-            axios.get(API_URL).then((response) => {
-                setMovies(response.data)
-                console.log(movies);
-            })
-            .catch((error) => {
-                console.log(error);
-            }); 
+            axios.get(API_URL)
+                .then((response) => {
+                    console.log(response.data);
+                    setMovies(response.data)
+                    console.log(movies);
+                })
+                .catch((error) => {
+                    console.log(error);
+                    console.log("error found");
+                }); 
         // } catch () {}
     }, []);
 
