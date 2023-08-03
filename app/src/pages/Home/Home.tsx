@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./Home.module.scss";
 
 // import variables from '../../styles/variables.scss';
@@ -7,6 +7,7 @@ import SidebarItem from "./SidebarItem";
 import { Divider, IconButton, List, StyledEngineProvider } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import Display from "./Display";
+import axios from "axios";
 
 
 const topPosts = [
@@ -63,10 +64,29 @@ const topPosts = [
 
 
 export default function Home() {
+    const [movies, setMovies] = useState();
     const [selectedPostIndex, setSelectedPostIndex] = useState(0);
     const [slidingLeft, setSlidingLeft] = useState(false);
     const [slidingRight, setSlidingRight] = useState(false);
     
+    useEffect(() => {
+        // try {
+            if(!process.env.REACT_APP_API_URL) {
+                console.error("NO API URL FOUND.");
+                return;
+            }
+            const API_URL = process.env.REACT_APP_API_URL + "/trendingMovies";
+            console.log(API_URL);
+            axios.get(API_URL).then((response) => {
+                setMovies(response.data)
+                console.log(movies);
+            })
+            .catch((error) => {
+                console.log(error);
+            }); 
+        // } catch () {}
+    }, []);
+
     const nextPost = () => {
         setSlidingLeft(true);
 
