@@ -4,23 +4,24 @@ import classes from "./Home.module.scss";
 // import variables from '../../styles/variables.scss';
 
 import SidebarItem from "./SidebarItem";
-import { Divider, IconButton, List, StyledEngineProvider } from "@mui/material";
+import { Divider, IconButton, List, Skeleton, StyledEngineProvider } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import Display from "./Display";
 import axios from "axios";
 
 
+
 interface Movie {
     poster: String,
     image: String,
-    mainText: String,
+    mainText: String
     secondaryText: String,
-    path: String
+    path: String,
 }
 
-
 export default function Home() {
-    const [trendingMovies, setTrendingMovies] = useState<Movie[]>([]);
+    const [movies, setMovies] = useState<Movie[]>([]);
+    const [isDataFetched, setIsDataFetched] = useState(false);
     const [selectedPostIndex, setSelectedPostIndex] = useState(0);
     const [slidingLeft, setSlidingLeft] = useState(false);
     const [slidingRight, setSlidingRight] = useState(false);
@@ -34,11 +35,13 @@ export default function Home() {
             const API_URL = process.env.REACT_APP_API_URL + "/trendingMovies";
             axios.get(API_URL)
                 .then((response) => {
-                    setTrendingMovies(response.data.results);
+                    setMovies(response.data.results)
+                    setIsDataFetched(true);
+                    // callMovies(response.data);
                 })
                 .catch((error) => {
                     console.log(error);
-                });
+                }); 
     }, []);
 
     const nextPost = () => {
@@ -50,13 +53,12 @@ export default function Home() {
         }, 300);
     };
     const getNextPostIndex = () => {
-        if(selectedPostIndex == trendingMovies.length-1) {
+        if(selectedPostIndex == movies.length-1) {
             return 0;
         }
         else {
             return selectedPostIndex+1;
         }
-        return (selectedPostIndex + 1) % trendingMovies.length
     };
     const previousPost = () => {
         setSlidingRight(true);
@@ -68,7 +70,7 @@ export default function Home() {
     }
     const getPreviousPostIndex = () => {
         if(selectedPostIndex == 0) {
-            return trendingMovies.length-1;
+            return movies.length-1;
         }
         else {
             return selectedPostIndex-1;
@@ -78,16 +80,16 @@ export default function Home() {
     const renderSidebarItems = () => {
         const sidebarItems = [];
         for(let i=0; i<3; i++) {
-            let currentIndex = (selectedPostIndex+1+i) % trendingMovies.length;
+            let currentIndex = (selectedPostIndex+1+i) % movies.length;
             sidebarItems.push(
                 <>
                 <SidebarItem 
-                    listKey={trendingMovies[currentIndex].mainText}
-                    image={trendingMovies[currentIndex].image}   
-                    mainText={trendingMovies[currentIndex].mainText}
-                    secondaryText={trendingMovies[currentIndex].secondaryText}
-                    path= { trendingMovies[currentIndex].path }
-                    data={ trendingMovies[currentIndex] }
+                    listKey={ movies[currentIndex].mainText }
+                    image={ movies[currentIndex].image }   
+                    mainText={ movies[currentIndex].mainText }
+                    secondaryText={ movies[currentIndex].secondaryText }
+                    path= { movies[currentIndex].path }
+                    data={ movies[currentIndex] }
                 />
                 <Divider />
                 </>
@@ -129,11 +131,11 @@ export default function Home() {
                                 ${slidingRight && classes.home__top__display__slideRight}
                             `}>  
                             <Display
-                                poster={ trendingMovies[getPreviousPostIndex()].poster }
-                                image={ trendingMovies[getPreviousPostIndex()].image }
-                                mainText={ trendingMovies[0].mainText }
-                                secondaryText={ trendingMovies[getPreviousPostIndex()].secondaryText }
-                                path={ trendingMovies[getPreviousPostIndex()].path }    
+                                poster={ movies[getPreviousPostIndex()].poster }
+                                image={ movies[getPreviousPostIndex()].image }
+                                mainText={ movies[getPreviousPostIndex()].mainText }
+                                secondaryText={ movies[getPreviousPostIndex()].secondaryText }
+                                path={ movies[getPreviousPostIndex()].path }    
                             />
                         </div>
                     }
@@ -141,25 +143,39 @@ export default function Home() {
                              ${slidingLeft && classes.home__top__display__slideLeft}
                              ${slidingRight && classes.home__top__display__slideRight}
                         `}>
-                        <Display
-                            poster={ trendingMovies[selectedPostIndex].poster }
-                            image={ trendingMovies[selectedPostIndex].image }
-                            mainText={ trendingMovies[0].mainText }
-                            secondaryText={ trendingMovies[selectedPostIndex].secondaryText }
-                            path={ trendingMovies[selectedPostIndex].path }    
-                        />
+                        {isDataFetched ?
+                        (
+                            <Display
+                                poster={ movies[selectedPostIndex].poster }
+                                image={ movies[selectedPostIndex].image }
+                                mainText={ movies[selectedPostIndex].mainText }
+                                secondaryText={ movies[selectedPostIndex].secondaryText }
+                                path={ movies[selectedPostIndex].path }    
+                            /> 
+                        ) :
+                        (
+                            <Skeleton variant="rectangular" width={'100%'} height={'100%'}
+                            sx={{'background-color': 'rgb(60,60,60)'}}/>
+                        )}
                     </div>
                     { slidingLeft && 
                         <div className={`${classes.home__top__display__rightDisplay}
                                 ${slidingLeft && classes.home__top__display__slideLeft}
                             `}>
-                            <Display
-                                poster={ trendingMovies[getNextPostIndex()].poster }
-                                image={ trendingMovies[getNextPostIndex()].image }
-                                mainText={ trendingMovies[getNextPostIndex()].mainText }
-                                secondaryText={ trendingMovies[getNextPostIndex()].secondaryText }
-                                path={ trendingMovies[getNextPostIndex()].path }    
-                            />
+                            {isDataFetched ?
+                            (
+                                <Display
+                                    poster={ movies[getNextPostIndex()].poster }
+                                    image={ movies[getNextPostIndex()].image }
+                                    mainText={ movies[getNextPostIndex()].mainText }
+                                    secondaryText={ movies[getNextPostIndex()].secondaryText }
+                                    path={ movies[getNextPostIndex()].path }    
+                                />
+                            ) :
+                            (
+                                <Skeleton variant="rectangular" width={'100%'} height={'100%'}
+                                sx={{'background-color': 'rgb(60,60,60)'}}/>
+                            )}
                         </div>
                     }
                 </div>
