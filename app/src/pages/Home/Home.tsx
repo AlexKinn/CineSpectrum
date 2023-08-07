@@ -83,14 +83,20 @@ export default function Home() {
             let currentIndex = (selectedPostIndex+1+i) % movies.length;
             sidebarItems.push(
                 <>
-                <SidebarItem 
-                    listKey={ movies[currentIndex].mainText }
-                    image={ movies[currentIndex].image }   
-                    mainText={ movies[currentIndex].mainText }
-                    secondaryText={ movies[currentIndex].secondaryText }
-                    path= { movies[currentIndex].path }
-                    data={ movies[currentIndex] }
-                />
+                { isDataFetched ? 
+                (
+                    <SidebarItem 
+                        listKey={ movies[currentIndex].mainText }
+                        image={ movies[currentIndex].image }   
+                        mainText={ movies[currentIndex].mainText }
+                        secondaryText={ movies[currentIndex].secondaryText }
+                        path= { movies[currentIndex].path }
+                        data={ movies[currentIndex] }
+                    />
+                ) :
+                (
+                    <Skeleton />
+                )}
                 <Divider />
                 </>
                 
@@ -130,13 +136,20 @@ export default function Home() {
                         <div className={`${classes.home__top__display__leftDisplay}
                                 ${slidingRight && classes.home__top__display__slideRight}
                             `}>  
-                            <Display
-                                poster={ movies[getPreviousPostIndex()].poster }
-                                image={ movies[getPreviousPostIndex()].image }
-                                mainText={ movies[getPreviousPostIndex()].mainText }
-                                secondaryText={ movies[getPreviousPostIndex()].secondaryText }
-                                path={ movies[getPreviousPostIndex()].path }    
-                            />
+                            {isDataFetched ?
+                            (
+                                <Display
+                                    poster={ movies[getPreviousPostIndex()].poster }
+                                    image={ movies[getPreviousPostIndex()].image }
+                                    mainText={ movies[getPreviousPostIndex()].mainText }
+                                    secondaryText={ movies[getPreviousPostIndex()].secondaryText }
+                                    path={ movies[getPreviousPostIndex()].path }    
+                                />
+                            ) :
+                            (
+                                <Skeleton variant="rectangular" width={'100%'} height={'100%'}
+                                sx={{'background-color': 'rgb(60,60,60)'}}/>    
+                            )}
                         </div>
                     }
                     <div className={`${classes.home__top__display__mainDisplay}
