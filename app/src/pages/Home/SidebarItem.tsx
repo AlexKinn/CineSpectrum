@@ -7,11 +7,10 @@ import { Link } from 'react-router-dom';
 function SidebarItem(props : any) {
  
     return(
-        <ListItem className={classes.sidebarItem} key={ props.listKey }>
+        <ListItem className={classes.sidebarItem} key={ props.tmdbID }>
             <Card className={classes.sidebarItem__card}>
                 <Link className={classes.sidebarItem__card__content} 
-                    // to={`/movies/${props.path}`}
-                    to={`/`}
+                    to={`/${props.mediaType}/${props.tmdbID}`}
                     state={ props.data }
                 >
                     {/* <div > */}

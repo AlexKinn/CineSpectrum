@@ -5,6 +5,7 @@ import MyList from './pages/MyList/MyList';
 import Navbar from './components/Navbar';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MoviePage from './pages/MoviePage';
+import ShowPage from './pages/ShowPage';
 
 export default function App() {
   return (
@@ -15,7 +16,9 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/my-list" element={<MyList />} />
-              <Route path="/movie/:moviePath" element={<MoviePage />} />
+              <Route path="/movie/:id" element={<MoviePage />} />
+              <Route path="/show/:id" element={<ShowPage />} /> {/* DEPRECATED */}
+              <Route path="/tv/:id" element={<ShowPage />} />
             </Routes>        
         </BrowserRouter>
       </header>

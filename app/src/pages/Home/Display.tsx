@@ -13,8 +13,7 @@ function Display(props: any) {
         <Card className={classes.display}>
             {/* <CardActionArea onClick={props.redirect(props.path)}> */}
             <Link className={classes.display__posterRedirect}
-                    // to={`/movies/${props.path}`}>
-                    to={`/`}>
+                    to={`/${props.mediaType}/${props.tmdbID}`}>
                 <CardMedia className={classes.display__posterRedirect__posterImg}
                     component="img"
                     image={props.poster}

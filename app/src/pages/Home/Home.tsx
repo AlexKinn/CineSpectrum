@@ -89,16 +89,15 @@ export default function Home() {
                 { isDataFetched ? 
                 (
                     <SidebarItem 
-                        listKey={ movies[currentIndex].tmdbID }
+                        tmdbID={ movies[currentIndex].tmdbID }
                         image={ movies[currentIndex].backdropPath }   
                         mainText={ movies[currentIndex].name }
                         secondaryText={ movies[currentIndex].overview }
-                        // path= { movies[currentIndex].path }
                         data={ movies[currentIndex] }
                     />
                 ) :
                 (
-                    <Skeleton />
+                    <Skeleton variant="rectangular" width={400} height={180}/>
                 )}
                 <Divider />
                 </>
@@ -142,12 +141,12 @@ export default function Home() {
                             {isDataFetched ?
                             (
                                 <Display
+                                    tmdbID={ movies[getPreviousPostIndex()].tmdbID }
                                     mainText={ movies[getPreviousPostIndex()].name }                                
                                     poster={ movies[getPreviousPostIndex()].posterPath }
                                     image={ movies[getPreviousPostIndex()].backdropPath }
                                     mediaType={ movies[getPreviousPostIndex()].mediaType}
                                     secondaryText={ movies[getPreviousPostIndex()].overview }
-                                    // path={ movies[getPreviousPostIndex()].path }    
                                 />
                             ) :
                             (
@@ -163,12 +162,12 @@ export default function Home() {
                         {isDataFetched ?
                         (
                             <Display
+                                tmdbID={ movies[selectedPostIndex].tmdbID }
                                 mainText={ movies[selectedPostIndex].name }
                                 poster={ movies[selectedPostIndex].posterPath }
                                 image={ movies[selectedPostIndex].backdropPath }
-                                // mediaType={ movies[selectedPostIndex].mediaType }
+                                mediaType={ movies[selectedPostIndex].mediaType }
                                 secondaryText={ movies[selectedPostIndex].overview }
-                                // path={ movies[selectedPostIndex].path }    
                             /> 
                         ) :
                         (
@@ -183,12 +182,12 @@ export default function Home() {
                             {isDataFetched ?
                             (
                                 <Display
+                                    tmdbID={ movies[getNextPostIndex()].tmdbID }
                                     mainText={ movies[getNextPostIndex()].name }
                                     poster={ movies[getNextPostIndex()].posterPath }
                                     image={ movies[getNextPostIndex()].backdropPath }
-                                    // mediaType={ movies[getNextPostIndex()].mediaType }
+                                    mediaType={ movies[getNextPostIndex()].mediaType }
                                     secondaryText={ movies[getNextPostIndex()].overview }
-                                    // path={ movies[getNextPostIndex()].path }    
                                 />
                             ) :
                             (
