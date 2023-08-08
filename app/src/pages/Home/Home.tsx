@@ -12,11 +12,13 @@ import axios from "axios";
 
 
 interface Movie {
-    poster: String,
-    image: String,
-    mainText: String
-    secondaryText: String,
-    path: String,
+    tmdbID: number,
+    name: string,
+    posterPath: string,
+    backdropPath: string,
+    mediaType: string,
+    overview: string
+    // path: string,   SETUP PATH IN DB AND FURTHER
 }
 
 export default function Home() {
@@ -35,6 +37,7 @@ export default function Home() {
             const API_URL = process.env.REACT_APP_API_URL + "/trendingMovies";
             axios.get(API_URL)
                 .then((response) => {
+                    console.log("Successfully connected to backend.")
                     setMovies(response.data.results)
                     setIsDataFetched(true);
                     // callMovies(response.data);
@@ -86,11 +89,11 @@ export default function Home() {
                 { isDataFetched ? 
                 (
                     <SidebarItem 
-                        listKey={ movies[currentIndex].mainText }
-                        image={ movies[currentIndex].image }   
-                        mainText={ movies[currentIndex].mainText }
-                        secondaryText={ movies[currentIndex].secondaryText }
-                        path= { movies[currentIndex].path }
+                        listKey={ movies[currentIndex].tmdbID }
+                        image={ movies[currentIndex].backdropPath }   
+                        mainText={ movies[currentIndex].name }
+                        secondaryText={ movies[currentIndex].overview }
+                        // path= { movies[currentIndex].path }
                         data={ movies[currentIndex] }
                     />
                 ) :
@@ -139,11 +142,12 @@ export default function Home() {
                             {isDataFetched ?
                             (
                                 <Display
-                                    poster={ movies[getPreviousPostIndex()].poster }
-                                    image={ movies[getPreviousPostIndex()].image }
-                                    mainText={ movies[getPreviousPostIndex()].mainText }
-                                    secondaryText={ movies[getPreviousPostIndex()].secondaryText }
-                                    path={ movies[getPreviousPostIndex()].path }    
+                                    mainText={ movies[getPreviousPostIndex()].name }                                
+                                    poster={ movies[getPreviousPostIndex()].posterPath }
+                                    image={ movies[getPreviousPostIndex()].backdropPath }
+                                    mediaType={ movies[getPreviousPostIndex()].mediaType}
+                                    secondaryText={ movies[getPreviousPostIndex()].overview }
+                                    // path={ movies[getPreviousPostIndex()].path }    
                                 />
                             ) :
                             (
@@ -159,11 +163,12 @@ export default function Home() {
                         {isDataFetched ?
                         (
                             <Display
-                                poster={ movies[selectedPostIndex].poster }
-                                image={ movies[selectedPostIndex].image }
-                                mainText={ movies[selectedPostIndex].mainText }
-                                secondaryText={ movies[selectedPostIndex].secondaryText }
-                                path={ movies[selectedPostIndex].path }    
+                                mainText={ movies[selectedPostIndex].name }
+                                poster={ movies[selectedPostIndex].posterPath }
+                                image={ movies[selectedPostIndex].backdropPath }
+                                // mediaType={ movies[selectedPostIndex].mediaType }
+                                secondaryText={ movies[selectedPostIndex].overview }
+                                // path={ movies[selectedPostIndex].path }    
                             /> 
                         ) :
                         (
@@ -178,11 +183,12 @@ export default function Home() {
                             {isDataFetched ?
                             (
                                 <Display
-                                    poster={ movies[getNextPostIndex()].poster }
-                                    image={ movies[getNextPostIndex()].image }
-                                    mainText={ movies[getNextPostIndex()].mainText }
-                                    secondaryText={ movies[getNextPostIndex()].secondaryText }
-                                    path={ movies[getNextPostIndex()].path }    
+                                    mainText={ movies[getNextPostIndex()].name }
+                                    poster={ movies[getNextPostIndex()].posterPath }
+                                    image={ movies[getNextPostIndex()].backdropPath }
+                                    // mediaType={ movies[getNextPostIndex()].mediaType }
+                                    secondaryText={ movies[getNextPostIndex()].overview }
+                                    // path={ movies[getNextPostIndex()].path }    
                                 />
                             ) :
                             (
