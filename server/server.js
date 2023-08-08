@@ -1,9 +1,15 @@
+/* RUN COMMAND IN DEVELOPMENT:
+node -r dotenv/config server.js
+*/
+
 const http = require('http');
 const express = require("express")
 const app = express()
 
 // const hostname = '127.0.0.1';
 const port = 3200;
+
+const QueryBD = require('./QueryDB');
 
 
 app.use((req, res, next) => {
@@ -17,8 +23,13 @@ app.use((req, res, next) => {
 
 
 
-app.get('/trendingMovies', (req, res) => {
-    res.json(data);
+
+app.get('/trendingMovies', async (req, res) => {
+    console.log("Starting...");
+    // const output = await QueryBD.connectAndQuery();
+    // console.log("RECEIVED DATA");
+    // console.log(output);
+    res.json( await QueryBD.connectAndQuery());
 });
 
 app.get('/', (req, res) => {
