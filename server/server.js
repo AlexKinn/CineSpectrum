@@ -26,9 +26,6 @@ app.use((req, res, next) => {
 
 app.get('/trendingMovies', async (req, res) => {
     console.log("Starting...");
-    // const output = await QueryBD.connectAndQuery();
-    // console.log("RECEIVED DATA");
-    // console.log(output);
     res.json( await QueryBD.connectAndQuery());
 });
 

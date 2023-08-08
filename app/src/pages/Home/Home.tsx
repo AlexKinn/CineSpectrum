@@ -8,21 +8,11 @@ import { Divider, IconButton, List, Skeleton, StyledEngineProvider } from "@mui/
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import Display from "./Display";
 import axios from "axios";
+import { TrendingMediaInterface } from '../../interfaces/TrendingMediaInterface';
 
-
-
-interface Movie {
-    tmdbID: number,
-    name: string,
-    posterPath: string,
-    backdropPath: string,
-    mediaType: string,
-    overview: string
-    // path: string,   SETUP PATH IN DB AND FURTHER
-}
 
 export default function Home() {
-    const [movies, setMovies] = useState<Movie[]>([]);
+    const [trendingMedia, setTrendingMedia] = useState<TrendingMediaInterface[]>([]);
     const [isDataFetched, setIsDataFetched] = useState(false);
     const [selectedPostIndex, setSelectedPostIndex] = useState(0);
     const [slidingLeft, setSlidingLeft] = useState(false);
@@ -38,7 +28,7 @@ export default function Home() {
             axios.get(API_URL)
                 .then((response) => {
                     console.log("Successfully connected to backend.")
-                    setMovies(response.data.results)
+                    setTrendingMedia(response.data.results)
                     setIsDataFetched(true);
                     // callMovies(response.data);
                 })
@@ -56,7 +46,7 @@ export default function Home() {
         }, 300);
     };
     const getNextPostIndex = () => {
-        if(selectedPostIndex == movies.length-1) {
+        if(selectedPostIndex == trendingMedia.length-1) {
             return 0;
         }
         else {
@@ -73,7 +63,7 @@ export default function Home() {
     }
     const getPreviousPostIndex = () => {
         if(selectedPostIndex == 0) {
-            return movies.length-1;
+            return trendingMedia.length-1;
         }
         else {
             return selectedPostIndex-1;
@@ -83,18 +73,19 @@ export default function Home() {
     const renderSidebarItems = () => {
         const sidebarItems = [];
         for(let i=0; i<3; i++) {
-            let currentIndex = (selectedPostIndex+1+i) % movies.length;
+            let currentIndex = (selectedPostIndex+1+i) % trendingMedia.length;
             sidebarItems.push(
                 <>
                 { isDataFetched ? 
                 (
                     <SidebarItem 
-                        tmdbID={ movies[currentIndex].tmdbID }
-                        image={ movies[currentIndex].backdropPath }   
-                        mainText={ movies[currentIndex].name }
-                        secondaryText={ movies[currentIndex].overview }
-                        data={ movies[currentIndex] }
-                    />
+                        // tmdbID={ movies[currentIndex].tmdbID }
+                        // image={ movies[currentIndex].backdropPath }   
+                        // mainText={ movies[currentIndex].name }
+                        // secondaryText={ movies[currentIndex].overview }
+                        // movie={ movies[currentIndex] }
+                        { ...trendingMedia[currentIndex] }
+                        />
                 ) :
                 (
                     <Skeleton variant="rectangular" width={400} height={180}/>
@@ -141,13 +132,14 @@ export default function Home() {
                             {isDataFetched ?
                             (
                                 <Display
-                                    tmdbID={ movies[getPreviousPostIndex()].tmdbID }
-                                    mainText={ movies[getPreviousPostIndex()].name }                                
-                                    poster={ movies[getPreviousPostIndex()].posterPath }
-                                    image={ movies[getPreviousPostIndex()].backdropPath }
-                                    mediaType={ movies[getPreviousPostIndex()].mediaType}
-                                    secondaryText={ movies[getPreviousPostIndex()].overview }
-                                />
+                                    // tmdbID={ movies[getPreviousPostIndex()].tmdbID }
+                                    // mainText={ movies[getPreviousPostIndex()].name }                                
+                                    // poster={ movies[getPreviousPostIndex()].posterPath }
+                                    // image={ movies[getPreviousPostIndex()].backdropPath }
+                                    // mediaType={ movies[getPreviousPostIndex()].mediaType}
+                                    // secondaryText={ movies[getPreviousPostIndex()].overview }
+                                    { ...trendingMedia[getPreviousPostIndex()] }
+                                    />
                             ) :
                             (
                                 <Skeleton variant="rectangular" width={'100%'} height={'100%'}
@@ -162,12 +154,13 @@ export default function Home() {
                         {isDataFetched ?
                         (
                             <Display
-                                tmdbID={ movies[selectedPostIndex].tmdbID }
-                                mainText={ movies[selectedPostIndex].name }
-                                poster={ movies[selectedPostIndex].posterPath }
-                                image={ movies[selectedPostIndex].backdropPath }
-                                mediaType={ movies[selectedPostIndex].mediaType }
-                                secondaryText={ movies[selectedPostIndex].overview }
+                                // tmdbID={ movies[selectedPostIndex].tmdbID }
+                                // mainText={ movies[selectedPostIndex].name }
+                                // poster={ movies[selectedPostIndex].posterPath }
+                                // image={ movies[selectedPostIndex].backdropPath }
+                                // mediaType={ movies[selectedPostIndex].mediaType }
+                                // secondaryText={ movies[selectedPostIndex].overview }
+                                { ...trendingMedia[selectedPostIndex] }
                             /> 
                         ) :
                         (
@@ -182,13 +175,14 @@ export default function Home() {
                             {isDataFetched ?
                             (
                                 <Display
-                                    tmdbID={ movies[getNextPostIndex()].tmdbID }
-                                    mainText={ movies[getNextPostIndex()].name }
-                                    poster={ movies[getNextPostIndex()].posterPath }
-                                    image={ movies[getNextPostIndex()].backdropPath }
-                                    mediaType={ movies[getNextPostIndex()].mediaType }
-                                    secondaryText={ movies[getNextPostIndex()].overview }
-                                />
+                                    // tmdbID={ movies[getNextPostIndex()].tmdbID }
+                                    // mainText={ movies[getNextPostIndex()].name }
+                                    // poster={ movies[getNextPostIndex()].posterPath }
+                                    // image={ movies[getNextPostIndex()].backdropPath }
+                                    // mediaType={ movies[getNextPostIndex()].mediaType }
+                                    // secondaryText={ movies[getNextPostIndex()].overview }
+                                    { ...trendingMedia[getNextPostIndex()] }
+                                    />
                             ) :
                             (
                                 <Skeleton variant="rectangular" width={'100%'} height={'100%'}
