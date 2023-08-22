@@ -5,17 +5,23 @@ import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import { Add, PlayArrow } from '@mui/icons-material';
 import { Link } from "react-router-dom";
 import { TrendingMediaInterface } from '../../interfaces/TrendingMediaInterface';
+import { TheMovieDBConfiguration } from "../../TheMovieDBConfiguration";
 
 function Display(trendingMedia: TrendingMediaInterface) {
+
+    // Size can be changed as per provided sizes in TheMovieDBConfiguration
+    const imageBasePath = TheMovieDBConfiguration.images.base_url + 'w780';
 
     return(
         <Card className={classes.display}>
             {/* <CardActionArea onClick={props.redirect(props.path)}> */}
             <Link className={classes.display__posterRedirect}
-                    to={`/${trendingMedia.mediaType}/${trendingMedia.tmdbID}`}>
+                    to={`/${trendingMedia.mediaType}/${trendingMedia.tmdbID}`}
+                    state={ trendingMedia }
+            >
                 <CardMedia className={classes.display__posterRedirect__posterImg}
                     component="img"
-                    image={trendingMedia.posterPath}
+                    image={imageBasePath + trendingMedia.backdropPath}
                     alt="mainImage"
                 />
                 {/* </CardActionArea> */}
@@ -37,7 +43,7 @@ function Display(trendingMedia: TrendingMediaInterface) {
             <div className={classes.display__imgContainer}>
                 <CardMedia className={classes.display__imgContainer__img} 
                     component="img"
-                    image={trendingMedia.backdropPath}
+                    image={imageBasePath + trendingMedia.posterPath}
                 />
                 <Tooltip title="Add to Watch Later">
                     <button className={classes.display__imgContainer__watchLaterButton}>                        

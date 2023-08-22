@@ -16,36 +16,6 @@ const config = {
 
 
 
-/*
-    //Use Azure VM Managed Identity to connect to the SQL database
-    const config = {
-        server: process.env["db_server"],
-        port: process.env["db_port"],
-        database: process.env["db_database"],
-        authentication: {
-            type: 'azure-active-directory-msi-vm'
-        },
-        options: {
-            encrypt: true
-        }
-    }
-
-    //Use Azure App Service Managed Identity to connect to the SQL database
-    const config = {
-        server: process.env["db_server"],
-        port: process.env["db_port"],
-        database: process.env["db_database"],
-        authentication: {
-            type: 'azure-active-directory-msi-app-service'
-        },
-        options: {
-            encrypt: true
-        }
-    }
-*/
-
-
-
 
 async function connectAndQuery() {
     try {
@@ -55,18 +25,11 @@ async function connectAndQuery() {
         var resultSet = await poolConnection.request().query(
             `SELECT * FROM Trending`);
         
-        // output column headers
-        // var columns = "";
-        // for (var column in resultSet.recordset.columns) {
-        //     columns += column + ", ";
-        // }
-        // console.log("%s\t", columns.substring(0, columns.length - 2));
 
-        // 
         const response = {results: []}
 
         resultSet.recordset.forEach(row => {
-            console.log("%s\t%s", row.TmdbID, row);
+            // console.log("%s\t%s", row.TmdbID, row);
             response.results.push({
                 tmdbID: row.TmdbID,
                 name: row.Name,
@@ -76,6 +39,7 @@ async function connectAndQuery() {
                 overview: row.Overview
             })
         });
+        console.log("Data fetched, returning data.")
         
         // close connection only when we're certain the application is finished
         poolConnection.close();

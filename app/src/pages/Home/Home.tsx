@@ -11,31 +11,93 @@ import axios from "axios";
 import { TrendingMediaInterface } from '../../interfaces/TrendingMediaInterface';
 
 
+const testData : TrendingMediaInterface[] = [
+    
+    // "movie1": 
+    {
+        // type: "show",
+        tmdbID: 1,
+        name: "The Witcher",
+        posterPath: "https://m.media-amazon.com/images/M/MV5BZmY0MDRhYTMtZGJlYS00NDJlLThkNTAtNWZjYjFjYjgyODAxXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._CR400,64,3247,1827_QL75_UX1000_CR0,0,1000,563_.jpg",
+        backdropPath: "https://m.media-amazon.com/images/M/MV5BMDEwOWVlY2EtMWI0ZC00OWVmLWJmZGItYTk3YjYzN2Y0YmFkXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_QL75_UX280_CR0,0,280,414_.jpg",
+        mediaType: "tv",
+        overview:  "Watch the New Season 3 Trailer"
+    },
+    // "movie2":
+    {
+        tmdbID: 2,
+        name: "One Piece",
+        posterPath: "https://m.media-amazon.com/images/M/MV5BZTE3MmVjYjQtZGU2ZC00MjJjLWFmZjktZmQxMmM4MTc3YjBhXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._CR467,28,3093,1740_QL75_UX1000_CR0,0,1000,563_.jpg",
+        backdropPath: "https://m.media-amazon.com/images/M/MV5BYzczMzllN2UtNDJmOS00MmE5LWE2MWYtNGEwODcwMDc2M2YyXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_QL75_UY414_CR8,0,280,414_.jpg",
+        mediaType: "movie",
+        overview: "The Legendary Manga Is Coming to Netflix"
+    },
+    // "movie3":
+    {   
+        // type: "movie",
+        tmdbID: 3,
+        name: "Oppenheimer",
+        posterPath: "oppenheimerPoster.jpg",
+        backdropPath: "oppenheimerIMG.jpg",
+        mediaType: "movie",
+        overview:  "Cillian Murphy, RDJ & Others Share Their Experience",
+    }, 
+    // "movie4":
+    {
+        // type: "movie",
+        tmdbID: 4,
+        name: "Wonka",
+        posterPath: "wonkaPoster.jpg",
+        backdropPath:  "wonkaIMG.jpg",
+        mediaType: "movie",
+        overview: "Watch the First Trailer",
+    }
+    // "movei5":
+    // {
+    //     // type: "movie",
+    //     poster: "https://m.media-amazon.com/images/M/MV5BYTc1YWU2NTgtNGI1Mi00N2I2LWE4ODUtZDY4MWJiZGE4NjE3XkEyXkFqcGdeQXVyMTUzMTg2ODkz._CR278,399,3277,1843_QL75_UY281_CR0,0,500,281_.jpg",
+    //     image: "blueBeetleIMG.jpg",
+    //     mainText: "'Blue Beetle'",
+    //     secondaryText: "Watch the Final Trailer",
+    //     path: "blue-beetle-2023"
+    // },
+    // // "movie6":
+    // {
+    //     // type: "movie",
+    //     poster: "ahsokaPoster.jpg",
+    //     image: "ahsokaIMG.jpg",
+    //     mainText: "Ahsoka",
+    //     secondaryText: "Watch the Trailer",
+    //     path: "ahsoka-2023"
+    // }
+];
+
+
 export default function Home() {
-    const [trendingMedia, setTrendingMedia] = useState<TrendingMediaInterface[]>([]);
-    const [isDataFetched, setIsDataFetched] = useState(false);
+    const [trendingMedia, setTrendingMedia] = useState<TrendingMediaInterface[]>(testData);
+    const [isDataFetched, setIsDataFetched] = useState(true); // change later
     const [selectedPostIndex, setSelectedPostIndex] = useState(0);
     const [slidingLeft, setSlidingLeft] = useState(false);
     const [slidingRight, setSlidingRight] = useState(false);
     
-    useEffect(() => {
-        // try {
-            if(!process.env.REACT_APP_API_URL) {
-                console.error("NO API URL FOUND.");
-                return;
-            }
-            const API_URL = process.env.REACT_APP_API_URL + "/trendingMovies";
-            axios.get(API_URL)
-                .then((response) => {
-                    console.log("Successfully connected to backend.")
-                    setTrendingMedia(response.data.results)
-                    setIsDataFetched(true);
-                    // callMovies(response.data);
-                })
-                .catch((error) => {
-                    console.log(error);
-                }); 
-    }, []);
+    // useEffect(() => {
+    //     // try {
+    //         if(!process.env.REACT_APP_API_URL) {
+    //             console.error("NO API URL FOUND.");
+    //             return;
+    //         }
+    //         const API_URL = process.env.REACT_APP_API_URL + "/trendingMovies";
+    //         axios.get(API_URL)
+    //             .then((response) => {
+    //                 console.log("Successfully connected to backend.")
+    //                 setTrendingMedia(response.data.results)
+    //                 setIsDataFetched(true);
+    //                 // callMovies(response.data);
+    //             })
+    //             .catch((error) => {
+    //                 console.log(error);
+    //             }); 
+    // }, []);
 
     const nextPost = () => {
         setSlidingLeft(true);
@@ -79,11 +141,6 @@ export default function Home() {
                 { isDataFetched ? 
                 (
                     <SidebarItem 
-                        // tmdbID={ movies[currentIndex].tmdbID }
-                        // image={ movies[currentIndex].backdropPath }   
-                        // mainText={ movies[currentIndex].name }
-                        // secondaryText={ movies[currentIndex].overview }
-                        // movie={ movies[currentIndex] }
                         { ...trendingMedia[currentIndex] }
                         />
                 ) :
@@ -132,12 +189,6 @@ export default function Home() {
                             {isDataFetched ?
                             (
                                 <Display
-                                    // tmdbID={ movies[getPreviousPostIndex()].tmdbID }
-                                    // mainText={ movies[getPreviousPostIndex()].name }                                
-                                    // poster={ movies[getPreviousPostIndex()].posterPath }
-                                    // image={ movies[getPreviousPostIndex()].backdropPath }
-                                    // mediaType={ movies[getPreviousPostIndex()].mediaType}
-                                    // secondaryText={ movies[getPreviousPostIndex()].overview }
                                     { ...trendingMedia[getPreviousPostIndex()] }
                                     />
                             ) :
@@ -154,12 +205,6 @@ export default function Home() {
                         {isDataFetched ?
                         (
                             <Display
-                                // tmdbID={ movies[selectedPostIndex].tmdbID }
-                                // mainText={ movies[selectedPostIndex].name }
-                                // poster={ movies[selectedPostIndex].posterPath }
-                                // image={ movies[selectedPostIndex].backdropPath }
-                                // mediaType={ movies[selectedPostIndex].mediaType }
-                                // secondaryText={ movies[selectedPostIndex].overview }
                                 { ...trendingMedia[selectedPostIndex] }
                             /> 
                         ) :
@@ -175,12 +220,6 @@ export default function Home() {
                             {isDataFetched ?
                             (
                                 <Display
-                                    // tmdbID={ movies[getNextPostIndex()].tmdbID }
-                                    // mainText={ movies[getNextPostIndex()].name }
-                                    // poster={ movies[getNextPostIndex()].posterPath }
-                                    // image={ movies[getNextPostIndex()].backdropPath }
-                                    // mediaType={ movies[getNextPostIndex()].mediaType }
-                                    // secondaryText={ movies[getNextPostIndex()].overview }
                                     { ...trendingMedia[getNextPostIndex()] }
                                     />
                             ) :
