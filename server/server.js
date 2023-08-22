@@ -7,16 +7,16 @@ const express = require("express")
 const app = express()
 
 // const hostname = '127.0.0.1';
-const port = 3200;
+const port = process.env.port || 3200;
 
 // const QueryBD = require('./QueryDB');
 
 
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
+// app.use((req, res, next) => {
+//     res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+// });
 
 
 
