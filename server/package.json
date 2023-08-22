@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "npm run build && node dist/server.js",
+    "start": "node dist/server.js",
     "start:dev": "nodemon --exec babel-node server.js",
     "build:digitalocean": "npm install --production=false && npm run build && npm ci",
     "build": "babel server.js -d dist",
