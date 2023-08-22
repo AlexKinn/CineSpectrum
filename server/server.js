@@ -9,7 +9,7 @@ const app = express()
 // const hostname = '127.0.0.1';
 const port = 3200;
 
-const QueryBD = require('./QueryDB');
+// const QueryBD = require('./QueryDB');
 
 
 app.use((req, res, next) => {
@@ -26,7 +26,7 @@ app.use((req, res, next) => {
 
 app.get('/trendingMovies', async (req, res) => {
     console.log("Starting...");
-    res.json( await QueryBD.connectAndQuery());
+    res.json(data);
 });
 
 app.get('/', (req, res) => {
