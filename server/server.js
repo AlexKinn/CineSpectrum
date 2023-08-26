@@ -9,6 +9,7 @@ const app = express()
 // const hostname = '127.0.0.1';
 const port = process.env.PORT || 8080;
 
+const FetchData = require('./FetchData');
 // const QueryBD = require('./QueryDB');
 
 
@@ -21,8 +22,15 @@ const port = process.env.PORT || 8080;
 
 
 
-
-
+app.get('/getTrendingMedia', async (req, res) => {
+    console.log("Fetching trending media...");
+    FetchData.getTrendingMedia()
+    .then((data) => {
+        console.log("data passed to server.js: " + data);
+        res.json(data);
+        })
+    .catch(error => console.error(error));
+});
 
 app.get('/trendingMovies', async (req, res) => {
     console.log("Starting...");
