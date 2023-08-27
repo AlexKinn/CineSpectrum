@@ -80,24 +80,22 @@ export default function Home() {
     const [slidingLeft, setSlidingLeft] = useState(false);
     const [slidingRight, setSlidingRight] = useState(false);
     
-    // useEffect(() => {
-    //     // try {
-    //         if(!process.env.REACT_APP_API_URL) {
-    //             console.error("NO API URL FOUND.");
-    //             return;
-    //         }
-    //         const API_URL = process.env.REACT_APP_API_URL + "/trendingMovies";
-    //         axios.get(API_URL)
-    //             .then((response) => {
-    //                 console.log("Successfully connected to backend.")
-    //                 setTrendingMedia(response.data.results)
-    //                 setIsDataFetched(true);
-    //                 // callMovies(response.data);
-    //             })
-    //             .catch((error) => {
-    //                 console.log(error);
-    //             }); 
-    // }, []);
+    useEffect(() => {
+        
+        const abortController = new AbortController();
+        const API_URL = process.env.REACT_APP_API_URL + "/trendingMovies";
+        axios.get(API_URL, {
+            signal: abortController.signal
+        }).then((response) => {
+                console.log("Fetching trending movies.")
+                setTrendingMedia(response.data.results)
+                setIsDataFetched(true);
+                // callMovies(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            }); 
+    }, []);
 
     const nextPost = () => {
         setSlidingLeft(true);

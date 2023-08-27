@@ -5,6 +5,7 @@ node -r dotenv/config server.js
 const http = require('http');
 const express = require("express")
 const app = express()
+const cors = require('cors');
 
 // const hostname = '127.0.0.1';
 const port = process.env.PORT || 8080;
@@ -12,30 +13,34 @@ const port = process.env.PORT || 8080;
 const FetchData = require('./FetchData');
 // const QueryBD = require('./QueryDB');
 
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    optionsSuccessStatus: 200
+}
 
-// app.use((req, res, next) => {
-//     res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//     next();
-// });
+// app.use(cors(corsOptions));
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 
 
 
-app.get('/getTrendingMedia', async (req, res) => {
+app.get('/trendingMedia', async (req, res) => {
     console.log("Fetching trending media...");
     FetchData.getTrendingMedia()
     .then((data) => {
-        console.log("data passed to server.js: " + data);
         res.json(data);
-        })
+    })
     .catch(error => console.error(error));
-});
+})
 
 app.get('/trendingMovies', async (req, res) => {
     console.log("Starting...");
     res.json(data);
-});
+})
 
 app.get('/', (req, res) => {
     res.send('Greetings');
