@@ -35,6 +35,7 @@ app.get('/trendingMedia', async (req, res) => {
     //     res.json(data);
     // })
     // .catch(error => console.error(error));
+    console.log("Sending data...");
     res.json(data.results);
 })
 

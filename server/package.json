@@ -5,9 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node dist/server.js",
-    "start:dev": "nodemon -r dotenv/config --exec babel-node server.js",
+    "start:dev": "nodemon -r dotenv/config --exec babel-node ServerFiles/server.js",
     "build:digitalocean": "npm install --production=false && npm run build && npm ci",
-    "build": "babel server.js -d dist",
+    "build": "babel -d dist ./ServerFiles",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
