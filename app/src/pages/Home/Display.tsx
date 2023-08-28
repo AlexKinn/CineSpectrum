@@ -1,27 +1,28 @@
 import React from "react";
 import classes from './Display.module.scss';
-import { Card, CardContent, CardMedia, IconButton, Tooltip, Typography } from "@mui/material";
-import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
+import { Card, CardMedia, IconButton, Tooltip, Typography } from "@mui/material";
 import { Add, PlayArrow } from '@mui/icons-material';
 import { Link } from "react-router-dom";
-import { TrendingMediaInterface } from '../../interfaces/TrendingMediaInterface';
 import { TheMovieDBConfiguration } from "../../TheMovieDBConfiguration";
 
-function Display(trendingMedia: TrendingMediaInterface) {
+function Display({ mediaID, mediaType, title, posterPath, backdropPath, overview } : 
+    { mediaID: number, mediaType: string, title?: string, posterPath: string, backdropPath: string, overview: string }) {
 
     // Size can be changed as per provided sizes in TheMovieDBConfiguration
-    const imageBasePath = TheMovieDBConfiguration.images.base_url + 'w780';
+    const imageBasePath = TheMovieDBConfiguration.images.base_url;
+    const backdropWidth = 'original';
+    const posterWidth = 'w780';
 
     return(
         <Card className={classes.display}>
             {/* <CardActionArea onClick={props.redirect(props.path)}> */}
             <Link className={classes.display__posterRedirect}
-                    to={`/${trendingMedia.mediaType}/${trendingMedia.tmdbID}`}
-                    state={ trendingMedia }
+                    to={`/${mediaType}/${mediaID}`}
+                    state={ mediaID }
             >
                 <CardMedia className={classes.display__posterRedirect__posterImg}
                     component="img"
-                    image={imageBasePath + trendingMedia.backdropPath}
+                    image={imageBasePath+backdropWidth + backdropPath}
                     alt="mainImage"
                 />
                 {/* </CardActionArea> */}
@@ -32,10 +33,10 @@ function Display(trendingMedia: TrendingMediaInterface) {
                 </IconButton>
                 <div className={classes.display__posterRedirect__text}>
                     <Typography className={classes.display__posterRedirect__text__mainText}>
-                        {trendingMedia.name}
+                        { title }
                     </Typography>
                     <Typography className={classes.display__posterRedirect__text__secondaryText}>
-                        {trendingMedia.overview}
+                        { overview }
                     </Typography>
                 </div>
                 {/* </CardContent> */}
@@ -43,14 +44,12 @@ function Display(trendingMedia: TrendingMediaInterface) {
             <div className={classes.display__imgContainer}>
                 <CardMedia className={classes.display__imgContainer__img} 
                     component="img"
-                    image={imageBasePath + trendingMedia.posterPath}
+                    image={ imageBasePath+posterWidth + posterPath }
                 />
                 <Tooltip title="Add to Watch Later">
                     <button className={classes.display__imgContainer__watchLaterButton}>                        
                         <div className={classes.display__imgContainer__watchLaterButton__bookmark}></div>
-                        {/* <IconButton className={classes.display__imgContainer__button}> */}
                         <Add className={classes.display__imgContainer__watchLaterButton__icon}/>
-                        {/* </IconButton> */}
                     </button>
                 </Tooltip>
             </div>
