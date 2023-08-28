@@ -10,13 +10,13 @@ const options = {
   }
 };
 
-const options2 = {
-  method: 'GET',
-  url: 'https://dog.ceo/api/breeds/list/all'
-};
+// const options2 = {
+//   method: 'GET',
+//   url: 'https://dog.ceo/api/breeds/list/all'
+// };
 
 function getTrendingMedia() {
-  return axios.request(options2).then(response => response.data)
+  return axios.request(options).then(response => response.data)
   .catch(error => console.error(error));
 };
 

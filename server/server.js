@@ -29,12 +29,13 @@ app.use((req, res, next) => {
 
 
 app.get('/trendingMedia', async (req, res) => {
-    console.log("Fetching trending media...");
-    FetchData.getTrendingMedia()
-    .then((data) => {
-        res.json(data);
-    })
-    .catch(error => console.error(error));
+    // console.log("Fetching trending media...");
+    // FetchData.getTrendingMedia()
+    // .then((data) => {
+    //     res.json(data);
+    // })
+    // .catch(error => console.error(error));
+    res.json(data.results);
 })
 
 app.get('/trendingMovies', async (req, res) => {

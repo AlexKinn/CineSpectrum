@@ -125,28 +125,27 @@ const testData : TrendingMediaInterface[] = [
 
 
 export default function Home() {
-    const [trendingMedia, setTrendingMedia] = useState<TrendingMediaInterface[]>(testData);
-    const [isDataFetched, setIsDataFetched] = useState(true); // change later
+    const [trendingMedia, setTrendingMedia] = useState<TrendingMediaInterface[]>([]);
+    const [isDataFetched, setIsDataFetched] = useState(false);
     const [selectedPostIndex, setSelectedPostIndex] = useState(0);
     const [slidingLeft, setSlidingLeft] = useState(false);
     const [slidingRight, setSlidingRight] = useState(false);
     
-    // useEffect(() => {
-        
-    //     const abortController = new AbortController();
-    //     const API_URL = process.env.REACT_APP_API_URL + "/trendingMovies";
-    //     axios.get(API_URL, {
-    //         signal: abortController.signal
-    //     }).then((response) => {
-    //             console.log("Fetching trending movies.")
-    //             setTrendingMedia(response.data.results)
-    //             setIsDataFetched(true);
-    //             // callMovies(response.data);
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //         }); 
-    // }, []);
+    useEffect(() => {
+        // const abortController = new AbortController();
+        const API_URL = process.env.REACT_APP_API_URL + "/trendingMedia";
+        console.log("Fetching trending movies.")
+        axios.get(API_URL, {
+            // signal: abortController.signal
+        }).then((response) => {
+                setTrendingMedia(response.data)
+                setIsDataFetched(true);
+                // callMovies(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            }); 
+    }, []);
 
     const nextPost = () => {
         if(slidingRight || slidingLeft) {return;}
