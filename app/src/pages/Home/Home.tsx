@@ -10,120 +10,6 @@ import Display from "./Display";
 import axios from "axios";
 import { TrendingMediaInterface } from '../../interfaces/TrendingMediaInterface';
 
-
-const testData : TrendingMediaInterface[] = [
-    
-    // "movie1": 
-    {
-        "adult": false,
-        "backdrop_path": "/na442LUrWkQMxSmrQUPtaw3T3nn.jpg",
-        "id": 615656,
-        "title": "Meg 2: The Trench",
-        "original_language": "en",
-        "original_title": "Meg 2: The Trench",
-        "overview": "An exploratory dive into the deepest depths of the ocean of a daring research team spirals into chaos when a malevolent mining operation threatens their mission and forces them into a high-stakes battle for survival.",
-        "poster_path": "/FQHtuf2zc8suMFE28RyvFt3FJN.jpg",
-        "media_type": "movie",
-        "genre_ids": [
-            28,
-            878,
-            27
-        ],
-        "popularity": 2319.709,
-        "release_date": "2023-08-02",
-        "video": false,
-        "vote_average": 6.949,
-        "vote_count": 810
-    },
-    {
-        "adult": false,
-        "backdrop_path": "/jZIYaISP3GBSrVOPfrp98AMa8Ng.jpg",
-        "id": 976573,
-        "title": "Elemental",
-        "original_language": "en",
-        "original_title": "Elemental",
-        "overview": "In a city where fire, water, land and air residents live together, a fiery young woman and a go-with-the-flow guy will discover something elemental: how much they have in common.",
-        "poster_path": "/8riWcADI1ekEiBguVB9vkilhiQm.jpg",
-        "media_type": "movie",
-        "genre_ids": [
-            16,
-            35,
-            10751,
-            14,
-            10749
-        ],
-        "popularity": 3167.104,
-        "release_date": "2023-06-14",
-        "video": false,
-        "vote_average": 7.791,
-        "vote_count": 1495
-    },
-    {
-        "adult": false,
-        "backdrop_path": "/4HodYYKEIsGOdinkGi2Ucz6X9i0.jpg",
-        "id": 569094,
-        "title": "Spider-Man: Across the Spider-Verse",
-        "original_language": "en",
-        "original_title": "Spider-Man: Across the Spider-Verse",
-        "overview": "After reuniting with Gwen Stacy, Brooklyn’s full-time, friendly neighborhood Spider-Man is catapulted across the Multiverse, where he encounters the Spider Society, a team of Spider-People charged with protecting the Multiverse’s very existence. But when the heroes clash on how to handle a new threat, Miles finds himself pitted against the other Spiders and must set out on his own to save those he loves most.",
-        "poster_path": "/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg",
-        "media_type": "movie",
-        "genre_ids": [
-            16,
-            28,
-            12
-        ],
-        "popularity": 2044.25,
-        "release_date": "2023-05-31",
-        "video": false,
-        "vote_average": 8.45,
-        "vote_count": 3806
-    },
-    {
-        "adult": false,
-        "backdrop_path": "/loDy1LWCkPjECjVTRmyKtOoUpNN.jpg",
-        "id": 114461,
-        "name": "Ahsoka",
-        "original_language": "en",
-        "original_name": "Ahsoka",
-        "overview": "Former Jedi Knight Ahsoka Tano investigates an emerging threat to a vulnerable galaxy.",
-        "poster_path": "/laCJxobHoPVaLQTKxc14Y2zV64J.jpg",
-        "media_type": "tv",
-        "genre_ids": [
-            10765,
-            10759
-        ],
-        "popularity": 772.911,
-        "first_air_date": "2023-08-22",
-        "vote_average": 8.3,
-        "vote_count": 85,
-        "origin_country": [
-            "US"
-        ]
-    },
-    {
-        "adult": false,
-        "backdrop_path": "/rLb2cwF3Pazuxaj0sRXQ037tGI1.jpg",
-        "id": 872585,
-        "title": "Oppenheimer",
-        "original_language": "en",
-        "original_title": "Oppenheimer",
-        "overview": "The story of J. Robert Oppenheimer’s role in the development of the atomic bomb during World War II.",
-        "poster_path": "/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
-        "media_type": "movie",
-        "genre_ids": [
-            18,
-            36
-        ],
-        "popularity": 721.421,
-        "release_date": "2023-07-19",
-        "video": false,
-        "vote_average": 8.276,
-        "vote_count": 2566
-    }
-];
-
-
 export default function Home() {
     const [trendingMedia, setTrendingMedia] = useState<TrendingMediaInterface[]>([]);
     const [isDataFetched, setIsDataFetched] = useState(false);
@@ -302,7 +188,7 @@ export default function Home() {
                     }
                 </div>
                 <List className={classes.home__top__sidebar}>
-                    {renderSidebarItems()}
+                    {isDataFetched && renderSidebarItems()}
                 </List>
             </div>
         </div>
