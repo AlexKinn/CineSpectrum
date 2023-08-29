@@ -132,19 +132,20 @@ export default function Home() {
     const [slidingRight, setSlidingRight] = useState(false);
     
     useEffect(() => {
-        // const abortController = new AbortController();
+        const abortController = new AbortController();
         const API_URL = process.env.REACT_APP_API_URL + "/trendingMedia";
         console.log("Fetching trending movies.")
         axios.get(API_URL, {
-            // signal: abortController.signal
-        }).then((response) => {
-                setTrendingMedia(response.data)
-                setIsDataFetched(true);
-                // callMovies(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            }); 
+            signal: abortController.signal
+        })
+        .then((response) => {
+            setTrendingMedia(response.data)
+            setIsDataFetched(true);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+        return () => abortController.abort(); 
     }, []);
 
     const nextPost = () => {

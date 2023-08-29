@@ -22,6 +22,6 @@ function getTrendingMedia() {
 
 
 module.exports = {
-  getTrendingMedia,
+  getTrendingMedia
 }
 

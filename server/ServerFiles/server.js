@@ -11,6 +11,7 @@ const cors = require('cors');
 const port = process.env.PORT || 8080;
 
 const FetchData = require('./FetchData');
+const Movies = require('./Movies');
 // const QueryBD = require('./QueryDB');
 
 const corsOptions = {
@@ -25,7 +26,7 @@ app.use((req, res, next) => {
     next();
 });
 
-
+ 
 
 
 app.get('/trendingMedia', async (req, res) => {
@@ -39,10 +40,14 @@ app.get('/trendingMedia', async (req, res) => {
     res.json(data.results);
 })
 
-app.get('/trendingMovies', async (req, res) => {
-    console.log("Sending mock data...");
-    res.json(data.results);
+app.get('/movie/:movieID', (req, res) => {
+    Movies.getMovie(req.params.movieID)
+    .then((data) => {
+        res.json(data)
+    })
+    .catch(error => console.error(error));
 })
+
 
 app.get('/', (req, res) => {
     res.send('Greetings');

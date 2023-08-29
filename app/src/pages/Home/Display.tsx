@@ -17,8 +17,8 @@ function Display({ mediaID, mediaType, title, posterPath, backdropPath, overview
         <Card className={classes.display}>
             {/* <CardActionArea onClick={props.redirect(props.path)}> */}
             <Link className={classes.display__posterRedirect}
-                    to={`/${mediaType}/${mediaID}`}
-                    state={ mediaID }
+                to={`/${mediaType}/${mediaID}`}
+                state={{ movieID: mediaID}}
             >
                 <CardMedia className={classes.display__posterRedirect__posterImg}
                     component="img"
