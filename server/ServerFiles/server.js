@@ -38,6 +38,10 @@ app.get('/movie/:movieID', (req, res) => {
     .catch(error => console.error(error));
 })
 
+app.get('/search/:searchText', (req, res) => {
+   console.log("Searching for media with keyword: "+ req.params.searchText); 
+});
+
 app.get('/', (req, res) => {
     res.send('Greetings');
 })

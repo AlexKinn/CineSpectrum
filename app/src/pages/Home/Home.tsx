@@ -68,7 +68,9 @@ export default function Home() {
             return selectedPostIndex-1;
         }
     };
-
+    const shortenOverview = (overview: string) => {
+        return overview.split(". ", 1)[0];
+    }
     const renderSidebarItems = () => {
         const sidebarItems = [];
         for(let i=0; i<3; i++) {
@@ -83,7 +85,7 @@ export default function Home() {
                         mediaType={ currentMedia.media_type }
                         title={ currentMedia.title ?? currentMedia.name }
                         posterPath={ currentMedia.poster_path }
-                        overview={ currentMedia.overview }
+                        overview={ shortenOverview(currentMedia.overview) }
                     />
                 ) :
                 (
@@ -96,6 +98,8 @@ export default function Home() {
         }
         return sidebarItems;
     };
+
+    
 
 
 
@@ -136,7 +140,7 @@ export default function Home() {
                                     title={ trendingMedia[getPreviousPostIndex()].title ?? trendingMedia[getPreviousPostIndex()].name}
                                     posterPath={ trendingMedia[getPreviousPostIndex()].poster_path }
                                     backdropPath={ trendingMedia[getPreviousPostIndex()].backdrop_path }
-                                    overview={ trendingMedia[getPreviousPostIndex()].overview }
+                                    overview={ shortenOverview(trendingMedia[getPreviousPostIndex()].overview) }
                                 />
                             ) :
                             (
@@ -157,7 +161,7 @@ export default function Home() {
                                 title={ trendingMedia[selectedPostIndex].title ?? trendingMedia[selectedPostIndex].name }
                                 posterPath={ trendingMedia[selectedPostIndex].poster_path }
                                 backdropPath={ trendingMedia[selectedPostIndex].backdrop_path }
-                                overview={ trendingMedia[selectedPostIndex].overview }
+                                overview={ shortenOverview(trendingMedia[selectedPostIndex].overview) }
                             /> 
                         ) :
                         (
@@ -177,7 +181,7 @@ export default function Home() {
                                     title={ trendingMedia[getNextPostIndex()].title ?? trendingMedia[getNextPostIndex()].name }
                                     posterPath={ trendingMedia[getNextPostIndex()].poster_path }
                                     backdropPath={ trendingMedia[getNextPostIndex()].backdrop_path } 
-                                    overview={ trendingMedia[getNextPostIndex()].overview }
+                                    overview={ shortenOverview(trendingMedia[getNextPostIndex()].overview) }
                                 />
                             ) :
                             (

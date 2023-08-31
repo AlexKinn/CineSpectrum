@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import classes from "./Navbar.module.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
 import SearchBar from "./SearchBar";
