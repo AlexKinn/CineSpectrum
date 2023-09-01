@@ -11,7 +11,7 @@ const options = {
 };
 
 function getTrendingMedia() {
-  return axios.request(options).then(response => response.data)
+  return axios.request(options).then(response => response)
   .catch(error => console.error(error));
 };
 

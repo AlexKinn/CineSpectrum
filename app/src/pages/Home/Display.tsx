@@ -9,7 +9,7 @@ function Display({ mediaID, mediaType, title, posterPath, backdropPath, overview
     { mediaID: number, mediaType: string, title?: string, posterPath: string, backdropPath: string, overview: string }) {
 
     // Size can be changed as per provided sizes in TheMovieDBConfiguration
-    const imageBasePath = TheMovieDBConfiguration.images.base_url;
+    const imageBasePath = TheMovieDBConfiguration.images.secure_base_url;
     const backdropWidth = 'original';
     const posterWidth = 'w780';
 
@@ -18,7 +18,7 @@ function Display({ mediaID, mediaType, title, posterPath, backdropPath, overview
             {/* <CardActionArea onClick={props.redirect(props.path)}> */}
             <Link className={classes.display__posterRedirect}
                 to={`/${mediaType}/${mediaID}`}
-                state={{ movieID: mediaID}}
+                state={{ mediaID: mediaID}}
             >
                 <CardMedia className={classes.display__posterRedirect__posterImg}
                     component="img"

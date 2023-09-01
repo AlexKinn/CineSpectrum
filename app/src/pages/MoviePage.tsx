@@ -8,8 +8,14 @@ import StarIcon from '@mui/icons-material/Star';
 
 function MoviePage() {
     const location = useLocation();
-    const movieID = location.state?.movieID; 
+    const movieID = location.state?.mediaID; 
     const [movie, setMovie] = useState<MovieInterface>();
+
+    useEffect(() => {
+        if(movie?.title) {
+            document.title= movie.title + ` (${movie.release_date.split('-', 1)[0]}) - Cinespectrum`;
+        }
+    }, [movie]);
 
     useEffect(() => {
         const abortController = new AbortController();
@@ -29,7 +35,7 @@ function MoviePage() {
     }, []);
 
         // Size can be changed as per provided sizes in TheMovieDBConfiguration
-        const imageBasePath = TheMovieDBConfiguration.images.base_url;
+        const imageBasePath = TheMovieDBConfiguration.images.secure_base_url;
         const backdropWidth = 'original';
         const posterWidth = 'w780';
 
@@ -39,7 +45,7 @@ function MoviePage() {
             <>
                 <div className={classes.movie__top}>
                     <div className={classes.movie__top__infoBar}>
-                        <p className={classes.movie__top__infoBar__episodeGuide}>Episode Guide </p>
+                        {/* <p className={classes.movie__top__infoBar__episodeGuide}>Episode Guide </p> */}
                         <p className={classes.movie__top__infoBar__castAndCrew}></p>
                         <p className={classes.movie__top__infoBar__userReviews}></p>
                         <p className={classes.movie__top__infoBar__trivia}></p>
@@ -66,7 +72,7 @@ function MoviePage() {
                                 <StarIcon className={classes.movie__top__backdropContainer__info__rating__starIcon} />
                                 <p>{ movie.vote_average.toFixed(1) }</p>
                                 <p className={classes.movie__top__backdropContainer__info__voteCount}>
-                                    { movie.vote_count + " User Votes" }
+                                    { " - " + movie.vote_count + " User Votes" }
                                 </p>
                             </div>
                         </div>

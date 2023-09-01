@@ -4,7 +4,7 @@ import classes from "./Home.module.scss";
 // import variables from '../../styles/variables.scss';
 
 import SidebarItem from "./SidebarItem";
-import { Divider, IconButton, List, Skeleton, StyledEngineProvider } from "@mui/material";
+import { Divider, IconButton, List, Skeleton } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import Display from "./Display";
 import axios from "axios";
@@ -17,6 +17,9 @@ export default function Home() {
     const [slidingLeft, setSlidingLeft] = useState(false);
     const [slidingRight, setSlidingRight] = useState(false);
     
+    useEffect(() => {
+        document.title = "Cinespectrum";
+    }, []);
     useEffect(() => {
         const abortController = new AbortController();
         const API_URL = process.env.REACT_APP_API_URL + "/trendingMedia";
@@ -106,7 +109,6 @@ export default function Home() {
     
     
     return(
-        <StyledEngineProvider injectFirst>
         <div className={classes.home}>
             <div className={classes.home__top}>
                 <div className={classes.home__top__display}>
@@ -196,6 +198,5 @@ export default function Home() {
                 </List>
             </div>
         </div>
-        </StyledEngineProvider>
     ) 
 }

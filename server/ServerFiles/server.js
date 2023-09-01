@@ -7,6 +7,8 @@ const port = process.env.PORT || 8080;
 
 const FetchData = require('./FetchData');
 const Movies = require('./Movies');
+const Shows = require('./Shows');
+const SearchFor = require('./SearchFor');
 
 // const corsOptions = {
 //     origin: 'http://localhost:3000',
@@ -23,8 +25,8 @@ app.use((req, res, next) => {
 app.get('/trendingMedia', async (req, res) => {
     console.log("Fetching trending media...");
     FetchData.getTrendingMedia()
-    .then((data) => {
-        res.json(data.results);
+    .then((response) => {
+        res.json(response.data.results);
     })
     .catch(error => console.error(error));
 })
@@ -32,14 +34,27 @@ app.get('/trendingMedia', async (req, res) => {
 app.get('/movie/:movieID', (req, res) => {
     console.log("Fetching movie with ID: "+ req.params.movieID);
     Movies.getMovie(req.params.movieID)
-    .then((data) => {
-        res.json(data)
+    .then((response) => {
+        res.json(response.data)
     })
     .catch(error => console.error(error));
 })
+app.get('/tv/:showID', (req, res) => {
+    console.log("Fetching show with id: " + req.params.showID);
+    Shows.getShow(req.params.showID)
+    .then((response) => {
+        res.json(response.data)
+    })
+    .catch(error => console.error(error));
+});
 
 app.get('/search/:searchText', (req, res) => {
    console.log("Searching for media with keyword: "+ req.params.searchText); 
+   SearchFor.searchForMedia(req.params.searchText)
+   .then((response) => {
+        res.json(response.data)
+   })
+   .catch(error => console.error(error));
 });
 
 app.get('/', (req, res) => {
