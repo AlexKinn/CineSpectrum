@@ -13,7 +13,6 @@ function SearchBar() {
 
   useEffect(() => {      
     const debouncedSearch = debounce((value: string) => { 
-      console.log("searching for: " + value);
       searchForMedia();
     }, 300);
     debouncedSearch(searchInput);
