@@ -16,6 +16,7 @@ export default function Home() {
     const [selectedPostIndex, setSelectedPostIndex] = useState(0);
     const [slidingLeft, setSlidingLeft] = useState(false);
     const [slidingRight, setSlidingRight] = useState(false);
+    const [areImagesLoaded, setAreImagesLoaded] = useState(false);
     
     useEffect(() => {
         document.title = "Cinespectrum";
@@ -32,18 +33,19 @@ export default function Home() {
         })
         .catch((error) => {
             console.log(error);
-        });
+        });    
         return () => abortController.abort(); 
     }, []);
 
     const nextPost = () => {
-        if(slidingRight || slidingLeft) {return;}
+        if(slidingRight || slidingLeft || !areImagesLoaded) {return;}
         setSlidingLeft(true);
+        setAreImagesLoaded(false);
 
         setTimeout(() => {
             setSelectedPostIndex(getNextPostIndex());
             setSlidingLeft(false);
-        }, 500);
+        }, 400);
     };
     const getNextPostIndex = () => {
         if(selectedPostIndex == trendingMedia.length-1) {
@@ -54,13 +56,14 @@ export default function Home() {
         }
     };
     const previousPost = () => {
-        if(slidingRight || slidingLeft) {return;}
+        if(slidingRight || slidingLeft || !areImagesLoaded) {return;}
         setSlidingRight(true);
+        setAreImagesLoaded(false);
 
         setTimeout(() => {
             setSelectedPostIndex(getPreviousPostIndex());
             setSlidingRight(false);
-        }, 500);
+        }, 400);
     }
     const getPreviousPostIndex = () => {
         if(selectedPostIndex == 0) {
@@ -100,6 +103,9 @@ export default function Home() {
         }
         return sidebarItems;
     };
+    const setImagesAreLoaded = () => {
+        setAreImagesLoaded(true);
+    };
 
     
 
@@ -125,7 +131,7 @@ export default function Home() {
                                     ${classes.home__top__display__directionalButton}
                                   `}
                         onClick={ nextPost }
-                        disableRipple            
+                        disableRipple       
                     >
                         <ArrowForwardIos />
                     </IconButton>
@@ -141,6 +147,7 @@ export default function Home() {
                                 posterPath={ trendingMedia[getPreviousPostIndex()].poster_path }
                                 backdropPath={ trendingMedia[getPreviousPostIndex()].backdrop_path }
                                 overview={ shortenOverview(trendingMedia[getPreviousPostIndex()].overview) }
+                                setImageLoaded={ setImagesAreLoaded }
                             />
                         ) :
                         (
@@ -161,6 +168,7 @@ export default function Home() {
                                 posterPath={ trendingMedia[selectedPostIndex].poster_path }
                                 backdropPath={ trendingMedia[selectedPostIndex].backdrop_path }
                                 overview={ shortenOverview(trendingMedia[selectedPostIndex].overview) }
+                                setImageLoaded={ setImagesAreLoaded }
                             /> 
                         ) :
                         (
@@ -180,6 +188,7 @@ export default function Home() {
                                 posterPath={ trendingMedia[getNextPostIndex()].poster_path }
                                 backdropPath={ trendingMedia[getNextPostIndex()].backdrop_path } 
                                 overview={ shortenOverview(trendingMedia[getNextPostIndex()].overview) }
+                                setImageLoaded={ setImagesAreLoaded }
                             />
                         ) :
                         (

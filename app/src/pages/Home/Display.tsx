@@ -5,8 +5,8 @@ import { Add, PlayArrow } from '@mui/icons-material';
 import { Link } from "react-router-dom";
 import { TheMovieDBConfiguration } from "../../TheMovieDBConfiguration";
 
-function Display({ mediaID, mediaType, title, posterPath, backdropPath, overview } : 
-    { mediaID: number, mediaType: string, title?: string, posterPath: string, backdropPath: string, overview: string }) {
+function Display({ mediaID, mediaType, title, posterPath, backdropPath, overview, setImageLoaded } : 
+    { mediaID: number, mediaType: string, title?: string, posterPath: string, backdropPath: string, overview: string, setImageLoaded: Function }) {
 
     // Size can be changed as per provided sizes in TheMovieDBConfiguration
     const imageBasePath = TheMovieDBConfiguration.images.secure_base_url;
@@ -24,6 +24,7 @@ function Display({ mediaID, mediaType, title, posterPath, backdropPath, overview
                     component="img"
                     image={imageBasePath+backdropWidth + backdropPath}
                     alt="mainImage"
+                    onLoad={ setImageLoaded() }
                 />
                 {/* </CardActionArea> */}
                 {/* <CardContent> */}
