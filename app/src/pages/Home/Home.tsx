@@ -43,7 +43,7 @@ export default function Home() {
         setTimeout(() => {
             setSelectedPostIndex(getNextPostIndex());
             setSlidingLeft(false);
-        }, 300);
+        }, 500);
     };
     const getNextPostIndex = () => {
         if(selectedPostIndex == trendingMedia.length-1) {
@@ -60,7 +60,7 @@ export default function Home() {
         setTimeout(() => {
             setSelectedPostIndex(getPreviousPostIndex());
             setSlidingRight(false);
-        }, 300);
+        }, 500);
     }
     const getPreviousPostIndex = () => {
         if(selectedPostIndex == 0) {
@@ -129,27 +129,25 @@ export default function Home() {
                     >
                         <ArrowForwardIos />
                     </IconButton>
-                    { slidingRight &&
-                        <div className={`${classes.home__top__display__leftDisplay}
-                                ${slidingRight && classes.home__top__display__slideRight}
-                            `}>  
-                            {isDataFetched ?
-                            (
-                                <Display
-                                    mediaID={ trendingMedia[getPreviousPostIndex()].id }
-                                    mediaType={ trendingMedia[getPreviousPostIndex()].media_type }
-                                    title={ trendingMedia[getPreviousPostIndex()].title ?? trendingMedia[getPreviousPostIndex()].name}
-                                    posterPath={ trendingMedia[getPreviousPostIndex()].poster_path }
-                                    backdropPath={ trendingMedia[getPreviousPostIndex()].backdrop_path }
-                                    overview={ shortenOverview(trendingMedia[getPreviousPostIndex()].overview) }
-                                />
-                            ) :
-                            (
-                                <Skeleton variant="rectangular" width={'100%'} height={'100%'}
-                                sx={{'background-color': 'rgb(60,60,60)'}}/>    
-                            )}
-                        </div>
-                    }
+                    <div className={`${classes.home__top__display__leftDisplay}
+                            ${slidingRight && classes.home__top__display__slideRight}
+                        `}>  
+                        {isDataFetched ?
+                        (
+                            <Display
+                                mediaID={ trendingMedia[getPreviousPostIndex()].id }
+                                mediaType={ trendingMedia[getPreviousPostIndex()].media_type }
+                                title={ trendingMedia[getPreviousPostIndex()].title ?? trendingMedia[getPreviousPostIndex()].name}
+                                posterPath={ trendingMedia[getPreviousPostIndex()].poster_path }
+                                backdropPath={ trendingMedia[getPreviousPostIndex()].backdrop_path }
+                                overview={ shortenOverview(trendingMedia[getPreviousPostIndex()].overview) }
+                            />
+                        ) :
+                        (
+                            <Skeleton variant="rectangular" width={'100%'} height={'100%'}
+                            sx={{'background-color': 'rgb(60,60,60)'}}/>    
+                        )}
+                    </div>
                     <div className={`${classes.home__top__display__mainDisplay}
                              ${slidingLeft && classes.home__top__display__slideLeft}
                              ${slidingRight && classes.home__top__display__slideRight}
@@ -170,27 +168,26 @@ export default function Home() {
                             sx={{'background-color': 'rgb(60,60,60)'}}/>
                         )}
                     </div>
-                    { slidingLeft && 
-                        <div className={`${classes.home__top__display__rightDisplay}
-                                ${slidingLeft && classes.home__top__display__slideLeft}
-                            `}>
-                            {isDataFetched ?
-                            (
-                                <Display
-                                    mediaID={ trendingMedia[getNextPostIndex()].id }
-                                    mediaType={ trendingMedia[getNextPostIndex()].media_type }
-                                    title={ trendingMedia[getNextPostIndex()].title ?? trendingMedia[getNextPostIndex()].name }
-                                    posterPath={ trendingMedia[getNextPostIndex()].poster_path }
-                                    backdropPath={ trendingMedia[getNextPostIndex()].backdrop_path } 
-                                    overview={ shortenOverview(trendingMedia[getNextPostIndex()].overview) }
-                                />
-                            ) :
-                            (
-                                <Skeleton variant="rectangular" width={'100%'} height={'100%'}
-                                sx={{'background-color': 'rgb(60,60,60)'}}/>
-                            )}
-                        </div>
-                    }
+                    <div className={`${classes.home__top__display__rightDisplay}
+                            ${slidingLeft && classes.home__top__display__slideLeft}
+                        `}>
+                        {isDataFetched ?
+                        (
+                            <Display
+                                mediaID={ trendingMedia[getNextPostIndex()].id }
+                                mediaType={ trendingMedia[getNextPostIndex()].media_type }
+                                title={ trendingMedia[getNextPostIndex()].title ?? trendingMedia[getNextPostIndex()].name }
+                                posterPath={ trendingMedia[getNextPostIndex()].poster_path }
+                                backdropPath={ trendingMedia[getNextPostIndex()].backdrop_path } 
+                                overview={ shortenOverview(trendingMedia[getNextPostIndex()].overview) }
+                            />
+                        ) :
+                        (
+                            <Skeleton variant="rectangular" width={'100%'} height={'100%'}
+                            sx={{'background-color': 'rgb(60,60,60)'}}/>
+                        )}
+                    </div>
+                    
                 </div>
                 <List className={classes.home__top__sidebar}>
                     {isDataFetched && renderSidebarItems()}
