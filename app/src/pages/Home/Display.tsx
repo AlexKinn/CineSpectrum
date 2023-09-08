@@ -20,11 +20,11 @@ function Display({ mediaID, mediaType, title, posterPath, backdropPath, overview
                 to={`/${mediaType}/${mediaID}`}
                 state={{ mediaID: mediaID}}
             >
-                <CardMedia className={classes.display__posterRedirect__posterImg}
+                <CardMedia className={classes.display__posterRedirect__posterImg} role="backdrop"
                     component="img"
                     image={imageBasePath+backdropWidth + backdropPath}
                     alt="mainImage"
-                    onLoad={ setImageLoaded() }
+                    onLoad={ () => setImageLoaded() }
                 />
                 {/* </CardActionArea> */}
                 {/* <CardContent> */}
@@ -33,7 +33,7 @@ function Display({ mediaID, mediaType, title, posterPath, backdropPath, overview
                     <PlayArrow />
                 </IconButton>
                 <div className={classes.display__posterRedirect__text}>
-                    <Typography className={classes.display__posterRedirect__text__mainText}>
+                    <Typography className={classes.display__posterRedirect__text__mainText} role="title">
                         { title }
                     </Typography>
                     <Typography className={classes.display__posterRedirect__text__secondaryText}>
@@ -43,7 +43,7 @@ function Display({ mediaID, mediaType, title, posterPath, backdropPath, overview
                 {/* </CardContent> */}
             </Link>
             <div className={classes.display__imgContainer}>
-                <CardMedia className={classes.display__imgContainer__img} 
+                <CardMedia className={classes.display__imgContainer__img} role="poster"
                     component="img"
                     image={ imageBasePath+posterWidth + posterPath }
                 />

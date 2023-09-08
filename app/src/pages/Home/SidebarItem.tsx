@@ -18,7 +18,7 @@ function SidebarItem({ mediaID, mediaType, title, posterPath, overview } :
                     to={`/${mediaType}/${mediaID}`}
                     state={{ mediaID: mediaID}}
                 >
-                    <CardMedia className={classes.sidebarItem__card__content__img}
+                    <CardMedia className={classes.sidebarItem__card__content__img} role="poster"
                         component="img"
                         image={ imageBasePath + posterPath }
                         alt={ title }
@@ -27,7 +27,7 @@ function SidebarItem({ mediaID, mediaType, title, posterPath, overview } :
                         <IconButton className={classes.sidebarItem__card__content__playButton}>
                             <PlayArrowIcon />
                         </IconButton>
-                        <Typography className={classes.sidebarItem__card__content__mainText}>
+                        <Typography className={classes.sidebarItem__card__content__mainText} role="title">
                             { title }
                         </Typography>
                         <Typography className={classes.sidebarItem__card__content__secondaryText}>
