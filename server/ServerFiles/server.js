@@ -26,35 +26,47 @@ app.get('/trendingMedia', async (req, res) => {
     console.log("Fetching trending media...");
     FetchData.getTrendingMedia()
     .then((response) => {
-        res.json(response.data.results);
+        res.status(200).json(response.data.results);
     })
-    .catch(error => console.error(error));
+    .catch(error => {
+        console.error(error)
+        res.status(500).json({ error: 'Internal Server Error' });
+    });
 })
 
 app.get('/movie/:movieID', (req, res) => {
     console.log("Fetching movie with ID: "+ req.params.movieID);
     Movies.getMovie(req.params.movieID)
     .then((response) => {
-        res.json(response.data)
+        res.status(200).json(response.data)
     })
-    .catch(error => console.error(error));
+    .catch(error => {
+        console.error(error)
+        res.status(500).json({ error: 'Internal Server Error' });
+    });
 })
 app.get('/tv/:showID', (req, res) => {
     console.log("Fetching show with id: " + req.params.showID);
     Shows.getShow(req.params.showID)
     .then((response) => {
-        res.json(response.data)
+        res.status(200).json(response.data)
     })
-    .catch(error => console.error(error));
+    .catch(error => {
+        console.error(error)
+        res.status(500).json({ error: 'Internal Server Error' });
+    });
 });
 
 app.get('/search/:searchText', (req, res) => {
    console.log("Searching for media with keyword: "+ req.params.searchText); 
    SearchFor.searchForMedia(req.params.searchText)
    .then((response) => {
-        res.json(response.data)
+        res.status(200).json(response.data)
    })
-   .catch(error => console.error(error));
+   .catch(error => {
+        console.error(error)
+        res.status(500).json({ error: 'Internal Server Error' });
+    });
 });
 
 app.get('/', (req, res) => {
