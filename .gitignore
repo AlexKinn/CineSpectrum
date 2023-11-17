@@ -4,7 +4,7 @@
 app/node_modules
 app/.pnp
 app/.pnp.js
-server/node_modules
+oldServer/node_modules
 
 # testing
 app/coverage
@@ -14,7 +14,7 @@ app/build
 
 # development env files
 app/.env.development
-server/.env
+oldServer/.env
 
 # misc
 app/.DS_Store
