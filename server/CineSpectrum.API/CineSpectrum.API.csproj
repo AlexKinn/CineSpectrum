@@ -16,6 +16,7 @@
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Models\DTOs\" />
+    <Folder Include="Services\ExternalAPI\" />
   </ItemGroup>
 
 </Project>
