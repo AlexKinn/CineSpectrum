@@ -3,6 +3,16 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+
+
+
+# launchSettings.json hidden to due to sensitive environment variables
+Properties/launchSettings.json
+
+
+
+
+
 # User-specific files
 *.rsuser
 *.suo
