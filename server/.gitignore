@@ -9,6 +9,7 @@
 # launchSettings.json hidden to due to sensitive environment variables
 CineSpectrum.API/Properties/launchSettings.json
 
+.env
 
 
 
