@@ -7,11 +7,18 @@
 
 
 # launchSettings.json hidden to due to sensitive environment variables
-Properties/launchSettings.json
+CineSpectrum.API/Properties/launchSettings.json
 
 
 
 
+
+
+
+
+
+
+## AUTO GENERATED
 
 # User-specific files
 *.rsuser
