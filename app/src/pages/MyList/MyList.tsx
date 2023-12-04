@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import classes from "./MyList.module.scss";
 import MyListTopSection from "./MyListTopSection";
+import { MyListMovieCard } from "../../components/MyListMovieCard";
+import { MovieWithRating } from "../../interfaces/MovieWithRating";
 
 
 function MyList() {
@@ -15,6 +17,11 @@ function MyList() {
   ]
   const [selectedOption, setSelectedOption] = useState(options[0]);
 
+  const exampleMovie : MovieWithRating = {
+    posterPath: "/Ag3D9qXjhJ2FUkrlJ0Cv1pgxqYQ.jpg",
+    title: "The Marvels",
+    rating: 7.5
+  }
 
     return (  
       <div className={classes.mylist}>
@@ -46,7 +53,7 @@ function MyList() {
               <div className={classes.mylist__items}>
                 <ul className={classes.mylist__list}>
                   <li className={classes.mylist__list__item}>
-                    first
+                    <MyListMovieCard {...exampleMovie}/>
                   </li>
                   <li className={classes.mylist__list__item}>
                     second
