@@ -1,0 +1,433 @@
+{
+    "page": 1,
+    "results": [
+        {
+            "adult": false,
+            "backdrop_path": "/35z8hWuzfFUZQaYog8E9LsXW3iI.jpg",
+            "id": 335977,
+            "title": "Indiana Jones and the Dial of Destiny",
+            "original_language": "en",
+            "original_title": "Indiana Jones and the Dial of Destiny",
+            "overview": "Finding himself in a new era, and approaching retirement, Indy wrestles with fitting into a world that seems to have outgrown him. But as the tentacles of an all-too-familiar evil return in the form of an old rival, Indy must don his hat and pick up his whip once more to make sure an ancient and powerful artifact doesn't fall into the wrong hands.",
+            "poster_path": "/Af4bXE63pVsb2FtbW8uYIyPBadD.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                12,
+                28,
+                14
+            ],
+            "popularity": 2085.307,
+            "release_date": "2023-06-28",
+            "video": false,
+            "vote_average": 6.7,
+            "vote_count": 1429
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/qD211Hb5XwFxrszzBBe5EUYJerh.jpg",
+            "id": 111110,
+            "name": "ONE PIECE",
+            "original_language": "en",
+            "original_name": "ONE PIECE",
+            "overview": "With his straw hat and ragtag crew, young pirate Monkey D. Luffy goes on an epic voyage for treasure in this live-action adaptation of the popular manga.",
+            "poster_path": "/rVX05xRKS5JhEYQFObCi4lAnZT4.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                10759,
+                10765
+            ],
+            "popularity": 2273.09,
+            "first_air_date": "2023-08-31",
+            "vote_average": 8.254,
+            "vote_count": 344,
+            "origin_country": [
+                "US"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/qlxy8yo5bcgUw2KAmmojUKp4rHd.jpg",
+            "id": 615656,
+            "title": "Meg 2: The Trench",
+            "original_language": "en",
+            "original_title": "Meg 2: The Trench",
+            "overview": "An exploratory dive into the deepest depths of the ocean of a daring research team spirals into chaos when a malevolent mining operation threatens their mission and forces them into a high-stakes battle for survival.",
+            "poster_path": "/4m1Au3YkjqsxF8iwQy0fPYSxE0h.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                28,
+                878,
+                27
+            ],
+            "popularity": 3949.944,
+            "release_date": "2023-08-02",
+            "video": false,
+            "vote_average": 7.0,
+            "vote_count": 1512
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/ctMserH8g2SeOAnCw5gFjdQF8mo.jpg",
+            "id": 346698,
+            "title": "Barbie",
+            "original_language": "en",
+            "original_title": "Barbie",
+            "overview": "Barbie and Ken are having the time of their lives in the colorful and seemingly perfect world of Barbie Land. However, when they get a chance to go to the real world, they soon discover the joys and perils of living among humans.",
+            "poster_path": "/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                35,
+                12,
+                14
+            ],
+            "popularity": 3359.052,
+            "release_date": "2023-07-19",
+            "video": false,
+            "vote_average": 7.374,
+            "vote_count": 3929
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/mvoW41kdSxiobGZ9ONL1Tqrpt3h.jpg",
+            "id": 114461,
+            "name": "Ahsoka",
+            "original_language": "en",
+            "original_name": "Ahsoka",
+            "overview": "Former Jedi Knight Ahsoka Tano investigates an emerging threat to a vulnerable galaxy.",
+            "poster_path": "/laCJxobHoPVaLQTKxc14Y2zV64J.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                10765,
+                10759
+            ],
+            "popularity": 1431.234,
+            "first_air_date": "2023-08-22",
+            "vote_average": 8.023,
+            "vote_count": 149,
+            "origin_country": [
+                "US"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/4HodYYKEIsGOdinkGi2Ucz6X9i0.jpg",
+            "id": 569094,
+            "title": "Spider-Man: Across the Spider-Verse",
+            "original_language": "en",
+            "original_title": "Spider-Man: Across the Spider-Verse",
+            "overview": "After reuniting with Gwen Stacy, Brooklyn’s full-time, friendly neighborhood Spider-Man is catapulted across the Multiverse, where he encounters the Spider Society, a team of Spider-People charged with protecting the Multiverse’s very existence. But when the heroes clash on how to handle a new threat, Miles finds himself pitted against the other Spiders and must set out on his own to save those he loves most.",
+            "poster_path": "/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                16,
+                28,
+                12
+            ],
+            "popularity": 870.988,
+            "release_date": "2023-05-31",
+            "video": false,
+            "vote_average": 8.445,
+            "vote_count": 4074
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/w2nFc2Rsm93PDkvjY4LTn17ePO0.jpg",
+            "id": 614930,
+            "title": "Teenage Mutant Ninja Turtles: Mutant Mayhem",
+            "original_language": "en",
+            "original_title": "Teenage Mutant Ninja Turtles: Mutant Mayhem",
+            "overview": "After years of being sheltered from the human world, the Turtle brothers set out to win the hearts of New Yorkers and be accepted as normal teenagers through heroic acts. Their new friend April O'Neil helps them take on a mysterious crime syndicate, but they soon get in over their heads when an army of mutants is unleashed upon them.",
+            "poster_path": "/ueO9MYIOHO7M1PiMUeX74uf8fB9.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                16,
+                35,
+                28
+            ],
+            "popularity": 715.585,
+            "release_date": "2023-07-31",
+            "video": false,
+            "vote_average": 7.259,
+            "vote_count": 367
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/fm6KqXpk3M2HVveHwCrBSSBaO0V.jpg",
+            "id": 872585,
+            "title": "Oppenheimer",
+            "original_language": "en",
+            "original_title": "Oppenheimer",
+            "overview": "The story of J. Robert Oppenheimer’s role in the development of the atomic bomb during World War II.",
+            "poster_path": "/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                18,
+                36
+            ],
+            "popularity": 512.44,
+            "release_date": "2023-07-19",
+            "video": false,
+            "vote_average": 8.266,
+            "vote_count": 3254
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/a6ptrTUH1c5OdWanjyYtAkOuYD0.jpg",
+            "id": 37854,
+            "name": "One Piece",
+            "original_language": "ja",
+            "original_name": "ワンピース",
+            "overview": "Years ago, the fearsome Pirate King, Gol D. Roger was executed leaving a huge pile of treasure and the famous \"One Piece\" behind. Whoever claims the \"One Piece\" will be named the new King of the Pirates.\n\nMonkey D. Luffy, a boy who consumed a \"Devil Fruit,\" decides to follow in the footsteps of his idol, the pirate Shanks, and find the One Piece. It helps, of course, that his body has the properties of rubber and that he's surrounded by a bevy of skilled fighters and thieves to help him along the way.\n\nLuffy will do anything to get the One Piece and become King of the Pirates!",
+            "poster_path": "/fcXdJlbSdUEeMSJFsXKsznGwwok.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                10759,
+                35,
+                16
+            ],
+            "popularity": 464.383,
+            "first_air_date": "1999-10-20",
+            "vote_average": 8.721,
+            "vote_count": 3978,
+            "origin_country": [
+                "JP"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/4fLZUr1e65hKPPVw0R3PmKFKxj1.jpg",
+            "id": 976573,
+            "title": "Elemental",
+            "original_language": "en",
+            "original_title": "Elemental",
+            "overview": "In a city where fire, water, land and air residents live together, a fiery young woman and a go-with-the-flow guy will discover something elemental: how much they have in common.",
+            "poster_path": "/4Y1WNkd88JXmGfhtWR7dmDAo1T2.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                16,
+                35,
+                10751,
+                14,
+                10749
+            ],
+            "popularity": 1323.89,
+            "release_date": "2023-06-14",
+            "video": false,
+            "vote_average": 7.8,
+            "vote_count": 1786
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/1Q7HS0d3gGsN5MOI4all8zYU0gq.jpg",
+            "id": 232125,
+            "name": "I Am Groot",
+            "original_language": "en",
+            "original_name": "I Am Groot",
+            "overview": "There’s no guarding the galaxy from this mischievous toddler! Get ready as Baby Groot takes center stage in his very own collection of shorts, exploring his glory days growing up and getting into trouble among the stars.",
+            "poster_path": "/3QfQYECgu6DX5UUWCBvv1Fl0BAJ.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                16,
+                35,
+                10751,
+                10765
+            ],
+            "popularity": 155.889,
+            "first_air_date": "2022-08-10",
+            "vote_average": 7.7,
+            "vote_count": 53,
+            "origin_country": [
+                "US"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/qEm4FrkGh7kGoEiBOyGYNielYVc.jpg",
+            "id": 635910,
+            "title": "The Last Voyage of the Demeter",
+            "original_language": "en",
+            "original_title": "The Last Voyage of the Demeter",
+            "overview": "The crew of the merchant ship Demeter attempts to survive the ocean voyage from Carpathia to London as they are stalked each night by a merciless presence onboard the ship.",
+            "poster_path": "/nrtbv6Cew7qC7k9GsYSf5uSmuKh.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                27,
+                14
+            ],
+            "popularity": 979.193,
+            "release_date": "2023-08-09",
+            "video": false,
+            "vote_average": 7.337,
+            "vote_count": 455
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/1HzL603WOer58xtnrRYdSIL5K04.jpg",
+            "id": 912908,
+            "title": "Strays",
+            "original_language": "en",
+            "original_title": "Strays",
+            "overview": "When Reggie is abandoned on the mean city streets by his lowlife owner, Doug, Reggie is certain that his beloved owner would never leave him on purpose. But once Reggie falls in with Bug, a fast-talking, foul-mouthed stray who loves his freedom and believes that owners are for suckers, Reggie finally realizes he was in a toxic relationship and begins to see Doug for the heartless sleazeball that he is.",
+            "poster_path": "/muDaKftykz9Nj1mhRheMdbuNI9Z.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                35,
+                12
+            ],
+            "popularity": 862.974,
+            "release_date": "2023-08-17",
+            "video": false,
+            "vote_average": 7.014,
+            "vote_count": 110
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/yF1eOkaYvwiORauRCPWznV9xVvi.jpg",
+            "id": 298618,
+            "title": "The Flash",
+            "original_language": "en",
+            "original_title": "The Flash",
+            "overview": "When his attempt to save his family inadvertently alters the future, Barry Allen becomes trapped in a reality in which General Zod has returned and there are no Super Heroes to turn to. In order to save the world that he is in and return to the future that he knows, Barry's only hope is to race for his life. But will making the ultimate sacrifice be enough to reset the universe?",
+            "poster_path": "/rktDFPbfHfUbArZ6OOOKsXcv0Bm.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                28,
+                12,
+                878
+            ],
+            "popularity": 757.905,
+            "release_date": "2023-06-13",
+            "video": false,
+            "vote_average": 6.896,
+            "vote_count": 2744
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/oahCTL082gwu6fYrxEOBe546uvB.jpg",
+            "id": 71914,
+            "name": "The Wheel of Time",
+            "original_language": "en",
+            "original_name": "The Wheel of Time",
+            "overview": "Follow Moiraine, a member of the shadowy and influential all-female organization called the “Aes Sedai” as she embarks on a dangerous, world-spanning journey with five young men and women. Moiraine believes one of them might be the reincarnation of an incredibly powerful individual, whom prophecies say will either save humanity or destroy it.",
+            "poster_path": "/ihBi24EIr5kwAeY2PqmsgAcCj4n.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                10765,
+                18
+            ],
+            "popularity": 958.333,
+            "first_air_date": "2021-11-18",
+            "vote_average": 7.743,
+            "vote_count": 1749,
+            "origin_country": [
+                "US"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/53z2fXEKfnNg2uSOPss2unPBGX1.jpg",
+            "id": 968051,
+            "title": "The Nun II",
+            "original_language": "en",
+            "original_title": "The Nun II",
+            "overview": "Set four years after the ending of the the nun, this follows Sister Irene as she investigates a murder at a boarding school in France. While investigating she is once again forced to face the demonic force Valak, the Nun.",
+            "poster_path": "/mYD7rtnL2s8zkZ9Vuc2HvHrlFsQ.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                27,
+                9648,
+                53
+            ],
+            "popularity": 924.556,
+            "release_date": "2023-09-05",
+            "video": false,
+            "vote_average": 7.0,
+            "vote_count": 25
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/AvSeU3ji59QLN2tfWXzVqI6hg8x.jpg",
+            "id": 532408,
+            "title": "The Boogeyman",
+            "original_language": "en",
+            "original_title": "The Boogeyman",
+            "overview": "Still reeling from the tragic death of their mother, a teenage girl and her younger sister find themselves plagued by a sadistic presence in their house and struggle to get their grieving father to pay attention before it’s too late.",
+            "poster_path": "/pYwZdnXVnVxAr7dx4MEK7tTK9gI.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                27,
+                9648
+            ],
+            "popularity": 445.956,
+            "release_date": "2023-05-31",
+            "video": false,
+            "vote_average": 6.726,
+            "vote_count": 310
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/rRcNmiH55Tz0ugUsDUGmj8Bsa4V.jpg",
+            "id": 884605,
+            "title": "No Hard Feelings",
+            "original_language": "en",
+            "original_title": "No Hard Feelings",
+            "overview": "On the brink of losing her childhood home, Maddie discovers an intriguing job listing: wealthy helicopter parents looking for someone to “date” their introverted 19-year-old son, Percy, before he leaves for college. To her surprise, Maddie soon discovers the awkward Percy is no sure thing.",
+            "poster_path": "/gD72DhJ7NbfxvtxGiAzLaa0xaoj.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                35,
+                10749
+            ],
+            "popularity": 594.213,
+            "release_date": "2023-06-15",
+            "video": false,
+            "vote_average": 7.167,
+            "vote_count": 1140
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/sa9vB0xb3OMU6iSMkig8RBbdESq.jpg",
+            "id": 113962,
+            "name": "Special Ops: Lioness",
+            "original_language": "en",
+            "original_name": "Special Ops: Lioness",
+            "overview": "Cruz Manuelos, a rough-around-the-edges but passionate young Marine, is recruited to join the CIA’s Lioness Engagement Team to help bring down a terrorist organization from within. Joe, the station chief of the Lioness program, is tasked with training, managing and leading her female undercover operatives.",
+            "poster_path": "/rXCzevakJoAN1qnZY0nAQPSLVRv.jpg",
+            "media_type": "tv",
+            "genre_ids": [
+                18
+            ],
+            "popularity": 845.859,
+            "first_air_date": "2023-07-23",
+            "vote_average": 8.343,
+            "vote_count": 271,
+            "origin_country": [
+                "US"
+            ]
+        },
+        {
+            "adult": false,
+            "backdrop_path": "/8FQeHmusSN2hk3bICf16x5GFQvT.jpg",
+            "id": 447277,
+            "title": "The Little Mermaid",
+            "original_language": "en",
+            "original_title": "The Little Mermaid",
+            "overview": "The youngest of King Triton’s daughters, and the most defiant, Ariel longs to find out more about the world beyond the sea, and while visiting the surface, falls for the dashing Prince Eric. With mermaids forbidden to interact with humans, Ariel makes a deal with the evil sea witch, Ursula, which gives her a chance to experience life on land, but ultimately places her life – and her father’s crown – in jeopardy.",
+            "poster_path": "/ym1dxyOk4jFcSl4Q2zmRrA5BEEN.jpg",
+            "media_type": "movie",
+            "genre_ids": [
+                12,
+                10751,
+                14,
+                10749
+            ],
+            "popularity": 670.804,
+            "release_date": "2023-05-18",
+            "video": false,
+            "vote_average": 6.559,
+            "vote_count": 1847
+        }
+    ],
+    "total_pages": 1000,
+    "total_results": 20000
+}
