@@ -4,6 +4,6 @@ namespace CineSpectrum.API.Services
 {
     public interface IMediaService
     {
-        List<MediaExternalApiDto> GetTrendingMedia();
+        Task<List<MediaExternalApiDto>> GetTrendingMedia();
     }
 }
