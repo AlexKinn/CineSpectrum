@@ -15,9 +15,10 @@ public class MediaController : ControllerBase
     }
 
     [HttpGet("trending-media")]
-    public IActionResult GetTrendingMedia()
+    public async Task<IActionResult> GetTrendingMedia()
     {
-        List<MediaExternalApiDto> trendingMedia = _mediaService.GetTrendingMedia();
+        // LIST WILL BE EMPTY IF NO MEDIA RETURNED
+        List<MediaExternalApiDto> trendingMedia = await _mediaService.GetTrendingMedia();
 
         return Ok(trendingMedia);
     }
