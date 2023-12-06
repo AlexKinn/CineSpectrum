@@ -4,7 +4,7 @@ import classes from "./Home.module.scss";
 // import variables from '../../styles/variables.scss';
 
 import SidebarItem from "./SidebarItem";
-import { Divider, IconButton, List, Skeleton } from "@mui/material";
+import { Divider, IconButton, List, ListItem, Skeleton } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 import Display from "./Display";
 import axios from "axios";
@@ -45,7 +45,7 @@ export default function Home() {
         setTimeout(() => {
             setSelectedPostIndex(getNextPostIndex());
             setSlidingLeft(false);
-        }, 400);
+        }, 500);
     };
     const getNextPostIndex = () => {
         if(selectedPostIndex == trendingMedia.length-1) {
@@ -63,7 +63,7 @@ export default function Home() {
         setTimeout(() => {
             setSelectedPostIndex(getPreviousPostIndex());
             setSlidingRight(false);
-        }, 400);
+        }, 500);
     }
     const getPreviousPostIndex = () => {
         if(selectedPostIndex == 0) {
@@ -82,23 +82,24 @@ export default function Home() {
             let currentIndex = (selectedPostIndex+1+i) % trendingMedia.length;
             let currentMedia = trendingMedia[currentIndex];
             sidebarItems.push(
+                // <ListItem>
                 <>
-                { isDataFetched ? 
-                (
-                    <SidebarItem 
-                        mediaID={ currentMedia.id }
-                        mediaType={ currentMedia.media_type }
-                        title={ currentMedia.title ?? currentMedia.name }
-                        posterPath={ currentMedia.poster_path }
-                        overview={ shortenOverview(currentMedia.overview) }
-                    />
-                ) :
-                (
-                    <Skeleton variant="rectangular" width={400} height={180}/>
-                )}
-                <Divider />
+                    { isDataFetched ? 
+                    (
+                        <SidebarItem 
+                            mediaID={ currentMedia.id }
+                            mediaType={ currentMedia.media_type }
+                            title={ currentMedia.title ?? currentMedia.name }
+                            posterPath={ currentMedia.poster_path }
+                            overview={ shortenOverview(currentMedia.overview) }
+                        />
+                    ) :
+                    (
+                        <Skeleton variant="rectangular" width={400} height={180}/>
+                    )}
+                    <Divider />
                 </>
-                
+                /* </ListItem> */    
             )
         }
         return sidebarItems;
@@ -152,7 +153,7 @@ export default function Home() {
                         ) :
                         (
                             <Skeleton variant="rectangular" width={'100%'} height={'100%'}
-                            sx={{'background-color': 'rgb(60,60,60)'}}/>    
+                            sx={{'backgroundColor': 'rgb(60,60,60)'}}/>    
                         )}
                     </div>
                     <div className={`${classes.home__top__display__mainDisplay}
@@ -173,7 +174,7 @@ export default function Home() {
                         ) :
                         (
                             <Skeleton variant="rectangular" width={'100%'} height={'100%'}
-                            sx={{'background-color': 'rgb(60,60,60)'}}/>
+                            sx={{'backgroundColor': 'rgb(60,60,60)'}}/>
                         )}
                     </div>
                     <div className={`${classes.home__top__display__rightDisplay}
@@ -193,7 +194,7 @@ export default function Home() {
                         ) :
                         (
                             <Skeleton variant="rectangular" width={'100%'} height={'100%'}
-                            sx={{'background-color': 'rgb(60,60,60)'}}/>
+                            sx={{'backgroundColor': 'rgb(60,60,60)'}}/>
                         )}
                     </div>
                     
