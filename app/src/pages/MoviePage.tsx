@@ -20,16 +20,13 @@ function MoviePage() {
     useEffect(() => {
         const abortController = new AbortController();
         const API_URL = process.env.REACT_APP_API_URL + "/movie/" + movieID;
-        console.log("Fetching movie with id " + movieID);
         axios.get(API_URL, {
             signal: abortController.signal
         }).then((response) => {
             setMovie(response.data);
-            console.log(movie);
-            console.log(response.data)
         })
         .catch((error) => {
-            console.log(error);
+            console.error(error);
         });
         return () => abortController.abort(); 
     }, []);
