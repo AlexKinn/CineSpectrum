@@ -8,6 +8,16 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddCors(options =>
+{
+    var frontEndURL = Environment.GetEnvironmentVariable("FRONTEND_URL") ?? "http://localhost:3000";
+    options.AddPolicy(name: "_myAllowSpecificOrigins",
+                      policy =>
+                      {
+                          policy.WithOrigins(frontEndURL);
+                      });
+});
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -15,6 +25,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MediaContext>();
 builder.Services.AddScoped<IMediaService, MediaService>();
 builder.Services.AddScoped<IMediaRepository, MediaRepository>();
+
 builder.Services.Configure<TmdbOptions>(
     builder.Configuration.GetSection(nameof(TmdbOptions)));
 builder.Services.AddHttpClient("Tmdb", (serviceProvider, client) =>
