@@ -8,7 +8,7 @@ public class MediaExternalApiDto
     public bool Adult { get; set; }
 
     [JsonPropertyName("backdrop_path")]
-    public string BackdropPath { get; set; }
+    public string BackdropPath { get; set; } = string.Empty;
 
     [JsonPropertyName("id")]
     public int Id { get; set; }
@@ -20,7 +20,7 @@ public class MediaExternalApiDto
     public string? Name { get; set; }
 
     [JsonPropertyName("original_language")]
-    public string OriginalLanguage { get; set; }
+    public string OriginalLanguage { get; set; } = string.Empty;
 
     [JsonPropertyName("original_title")]
     public string? OriginalTitle { get; set; }
@@ -29,16 +29,16 @@ public class MediaExternalApiDto
     public string? OriginalName { get; set; }
 
     [JsonPropertyName("overview")]
-    public string Overview { get; set; }
+    public string Overview { get; set; } = string.Empty;
 
     [JsonPropertyName("poster_path")]
-    public string PosterPath { get; set; }
+    public string PosterPath { get; set; } = string.Empty;
 
     [JsonPropertyName("media_type")]
-    public string MediaType { get; set; }
+    public string MediaType { get; set; } = string.Empty;
 
     [JsonPropertyName("genre_ids")]
-    public List<int> GenreIds { get; set; }
+    public List<int> GenreIds { get; set; } = new List<int>();
 
     [JsonPropertyName("popularity")]
     public double Popularity { get; set; }
