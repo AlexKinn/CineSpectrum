@@ -23,7 +23,7 @@ export default function Home() {
     }, []);
     useEffect(() => {
         const abortController = new AbortController();
-        const API_URL = process.env.REACT_APP_API_URL + "/trendingMedia";
+        const API_URL = process.env.REACT_APP_API_URL + "/trending-media";
         axios.get(API_URL, {
             signal: abortController.signal
         })
