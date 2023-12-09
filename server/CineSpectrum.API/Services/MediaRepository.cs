@@ -18,7 +18,7 @@ public class MediaRepository : IMediaRepository
 
     public async Task<List<MediaExternalApiDto>> GetTrendingMedia()
     {
-        var client = _httpClientFactory.CreateClient("Tmdb");
+        HttpClient client = _httpClientFactory.CreateClient("Tmdb");
 
         HttpResponseMessage response = await client.GetAsync(_options.TrendingMediaURL);
 
@@ -30,7 +30,7 @@ public class MediaRepository : IMediaRepository
             return trendingMedia;
 
         }
-        // ERROR HANDLING
+        // ERROR HANDLING NEEDED
         throw new Exception($"Bad response from GetTrendingMedia API call: {response.ReasonPhrase}");
     }
 }
