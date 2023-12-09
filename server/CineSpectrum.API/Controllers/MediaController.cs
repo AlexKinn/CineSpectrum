@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CineSpectrum.API.Controllers;
 
 [ApiController]
+[Route("[controller]")]
 public class MediaController : ControllerBase
 {
     private readonly IMediaService _mediaService;
@@ -17,7 +18,6 @@ public class MediaController : ControllerBase
     [HttpGet("trending-media")]
     public async Task<IActionResult> GetTrendingMedia()
     {
-        // LIST WILL BE EMPTY IF NO MEDIA RETURNED
         List<MediaExternalApiDto> trendingMedia = await _mediaService.GetTrendingMedia();
 
         return Ok(trendingMedia);
