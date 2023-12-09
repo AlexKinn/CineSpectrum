@@ -1,6 +1,8 @@
 using CineSpectrum.API.Configurations;
 using CineSpectrum.API.Data;
 using CineSpectrum.API.Services;
+using CineSpectrum.API.Services.Movie;
+using CineSpectrum.API.Services.TvShow;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
@@ -8,10 +10,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 builder.Services.AddCors(options =>
 {
     var frontEndURL = Environment.GetEnvironmentVariable("FRONTEND_URL") ?? "http://localhost:3000";
-    options.AddPolicy(name: "_myAllowSpecificOrigins",
+    options.AddPolicy(name: MyAllowSpecificOrigins,
                       policy =>
                       {
                           policy.WithOrigins(frontEndURL);
@@ -25,6 +29,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MediaContext>();
 builder.Services.AddScoped<IMediaService, MediaService>();
 builder.Services.AddScoped<IMediaRepository, MediaRepository>();
+builder.Services.AddScoped<IMovieService, MovieService>();
+builder.Services.AddScoped<IMovieRepository, MovieRepository>();
+builder.Services.AddScoped<ITvShowService, TvShowService>();
+builder.Services.AddScoped<ITvShowRepository, TvShowRepository>();
+
 
 builder.Services.Configure<TmdbOptions>(
     builder.Configuration.GetSection(nameof(TmdbOptions)));
@@ -35,7 +44,7 @@ builder.Services.AddHttpClient("Tmdb", (serviceProvider, client) =>
 
     client.DefaultRequestHeaders.Add("accept", "application/json");
     client.DefaultRequestHeaders.Add("Authorization", $"Bearer {Environment.GetEnvironmentVariable("TMDB_API_KEY")}");
-    //client.BaseAddress = new Uri(settings.BaseURL);
+    client.BaseAddress = new Uri(settings.BaseURL);
 });
 
 var app = builder.Build();
@@ -65,6 +74,8 @@ app.MapGet("TmdbKey", () =>
     };
     return Results.Ok(response);
 });
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseHttpsRedirection();
 
