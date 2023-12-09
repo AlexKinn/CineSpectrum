@@ -19,7 +19,7 @@ function ShowPage() {
 
     useEffect(() => {
         const abortController = new AbortController();
-        const API_URL = process.env.REACT_APP_API_URL + "/tv/" + showID;
+        const API_URL = process.env.REACT_APP_API_URL + "/tvshow/" + showID;
         console.log("Fetching show with id " + showID);
         axios.get(API_URL, {
             signal: abortController.signal
