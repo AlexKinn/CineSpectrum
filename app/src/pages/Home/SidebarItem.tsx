@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from "./SidebarItem.module.scss";
-import { ListItem, Card, CardContent, CardMedia, CardActionArea, Typography, Box, StyledEngineProvider, IconButton, Divider} from '@mui/material';
+import { ListItem, Card, CardContent, CardMedia, Typography, IconButton} from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { Link } from 'react-router-dom';
 import { TheMovieDBConfiguration } from '../../TheMovieDBConfiguration';
@@ -9,7 +9,8 @@ function SidebarItem({ mediaID, mediaType, title, posterPath, overview } :
     { mediaID: number, mediaType: string, title?: string, posterPath: string, overview: string }) {
  
     // Size can be changed as per provided sizes in TheMovieDBConfiguration
-    const imageBasePath = TheMovieDBConfiguration.images.secure_base_url + 'original';
+    const posterSize = 'w185'
+    const imageBasePath = TheMovieDBConfiguration.images.secure_base_url + posterSize;
 
     return(
         <ListItem className={classes.sidebarItem} key={ mediaID }>

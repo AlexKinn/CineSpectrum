@@ -11,7 +11,7 @@ function Display({ mediaID, mediaType, title, posterPath, backdropPath, overview
     // Size can be changed as per provided sizes in TheMovieDBConfiguration
     const imageBasePath = TheMovieDBConfiguration.images.secure_base_url;
     const backdropWidth = 'original';
-    const posterWidth = 'w780';
+    const posterWidth = 'w342';
 
     return(
         <Card className={classes.display}>
