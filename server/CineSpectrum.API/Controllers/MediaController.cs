@@ -16,6 +16,7 @@ public class MediaController : ControllerBase
     }
 
     [HttpGet("trending-media")]
+    [ProducesResponseType(200)]
     public async Task<IActionResult> GetTrendingMedia()
     {
         List<MediaExternalApiDto> trendingMedia = await _mediaService.GetTrendingMedia();

@@ -16,6 +16,8 @@ public class MovieController : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [ProducesResponseType(200)]
+    [ProducesResponseType(404)]
     public async Task<IActionResult> GetMovieById(int id)
     {
         MovieExternalApiDto? movie = await _movieService.GetMovieById(id);
