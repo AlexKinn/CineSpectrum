@@ -1,8 +1,10 @@
-﻿using System.Text.Json.Serialization;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 namespace CineSpectrum.API.Models;
 
-public class MediaExternalApiDto
+[PrimaryKey(nameof(Id), nameof(MediaType))]
+public class Media
 {
     [JsonPropertyName("id")]
     public int Id { get; set; }
